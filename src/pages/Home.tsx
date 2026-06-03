@@ -10,6 +10,19 @@ function whatsapp(msg: string) {
 function hotelLink(slug: string) {
   return `https://www.hotellook.com/search?destination=${slug}&adults=2&marker=${MARKER}`;
 }
+function toMMDD(date: string) {
+  if (!date) return "";
+  const [, mm, dd] = date.split("-");
+  return mm + dd;
+}
+function aviasalesUrl(origin: string, dest: string, departDate = "", returnDate = "", pax = 1) {
+  const dep = toMMDD(departDate);
+  const ret = toMMDD(returnDate);
+  const path = dep
+    ? `${origin}${dest}${dep}${ret}${pax}`
+    : `${origin}${dest}${pax}`;
+  return `https://www.aviasales.com/search/${path}?marker=${MARKER}`;
+}
 
 const AIRPORTS = [
   { code: "DXB", city: "Dubai", country: "UAE" },
@@ -194,13 +207,17 @@ export default function Home() {
   const today = new Date().toISOString().split("T")[0];
 
   function handleGetFare() {
-    const destText = toSelected
-      ? `${toSelected.city} (${toSelected.code})`
-      : to || "my destination";
-    const dateText = departDate ? `, departing ${departDate}` : "";
-    const retText = returnDate ? `, returning ${returnDate}` : "";
-    const msg = `Hi! I need a ${CABIN_INFO[activeTab].label} fare from Colombo (CMB) to ${destText}${dateText}${retText} (${tripType === "return" ? "Round-trip" : "One-way"}). Please confirm availability and price.`;
-    window.open(whatsapp(msg), "_blank");
+    const destCode = toSelected?.code || "";
+    if (destCode) {
+      const ret = tripType === "return" ? returnDate : "";
+      window.open(aviasalesUrl("CMB", destCode, departDate, ret), "_blank");
+    } else {
+      const destText = to || "my destination";
+      const dateText = departDate ? `, departing ${departDate}` : "";
+      const retText = returnDate ? `, returning ${returnDate}` : "";
+      const msg = `Hi! I need a ${CABIN_INFO[activeTab].label} fare from Colombo to ${destText}${dateText}${retText}. Please confirm availability and price.`;
+      window.open(whatsapp(msg), "_blank");
+    }
   }
 
   function handleHotelSearch() {
@@ -345,7 +362,13 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <p style={{ marginTop: 14, fontSize: 12, color: "#aaa", fontStyle: "italic" }}>{cabin.desc}</p>
+        <div style={{ marginTop: 14, display: "flex", alignItems: "center", justifyContent: "center", gap: 16, flexWrap: "wrap" }}>
+          <p style={{ fontSize: 12, color: "#aaa", fontStyle: "italic", margin: 0 }}>{cabin.desc}</p>
+          <a href={WA_LINK} target="_blank" rel="noreferrer"
+            style={{ fontSize: 12, color: "#25d366", fontWeight: 600, textDecoration: "none", display: "flex", alignItems: "center", gap: 5 }}>
+            <WhatsAppIcon size={13} /> Need a personal quote? Chat with our agent
+          </a>
+        </div>
       </div>
 
       {/* ── FLIGHT DESTINATION CARDS ── */}
@@ -370,13 +393,11 @@ export default function Home() {
         <div className="cmf-grid">
           {ROUTES.map(r => {
             const price = activeTab === "economy" ? r.economy : activeTab === "premium" ? r.premium : r.business;
-            const msg = `Hi! I'm interested in a ${CABIN_INFO[activeTab].label} fare from Colombo to ${r.dest} (${r.code}). Price shown: ${price}. Can you confirm?`;
             return (
-              <a key={r.code} href={whatsapp(msg)} target="_blank" rel="noreferrer"
+              <a key={r.code} href={aviasalesUrl("CMB", r.code)} target="_blank" rel="noreferrer"
                 style={{ borderRadius: 14, overflow: "hidden", cursor: "pointer", textDecoration: "none", color: "inherit", display: "block", position: "relative", transition: "transform 0.18s, box-shadow 0.18s", boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}
                 onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 10px 32px rgba(0,0,0,0.14)"; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.07)"; }}>
-                {/* Image */}
                 <div style={{ height: 160, overflow: "hidden", position: "relative" }}>
                   <img src={r.img} alt={r.dest} style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
                   <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 60%)" }} />
@@ -387,14 +408,13 @@ export default function Home() {
                   {activeTab === "business" && <span style={{ position: "absolute", top: 10, right: 10, fontSize: 10, background: "#1a1a1a", color: "#fff", padding: "3px 9px", borderRadius: 20, fontWeight: 700 }}>Business</span>}
                   {activeTab === "premium" && <span style={{ position: "absolute", top: 10, right: 10, fontSize: 10, background: "#7c3aed", color: "#fff", padding: "3px 9px", borderRadius: 20, fontWeight: 700 }}>Premium</span>}
                 </div>
-                {/* Price row */}
                 <div style={{ background: "#fff", padding: "14px 16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                   <div>
-                    <div style={{ fontSize: 10, color: "#aaa", fontWeight: 600, letterSpacing: "0.08em" }}>FROM</div>
+                    <div style={{ fontSize: 10, color: "#aaa", fontWeight: 600, letterSpacing: "0.08em" }}>INDICATIVE FROM</div>
                     <div style={{ fontSize: "clamp(15px,2vw,17px)", fontWeight: 900 }}>{price}</div>
                   </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11, color: "#25d366", fontWeight: 700 }}>
-                    <WhatsAppIcon size={13} /> Book
+                  <div style={{ fontSize: 11, color: "#1a1a1a", fontWeight: 700, background: "#f0f0f0", padding: "4px 10px", borderRadius: 6 }}>
+                    View fares →
                   </div>
                 </div>
               </a>
