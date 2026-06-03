@@ -37,17 +37,7 @@ const CABIN_INFO: Record<CabinTab, { label: string; desc: string; color: string 
   business: { label: "Business Class",  desc: "Lie-flat beds, lounges & finest dining in the sky",   color: "#b45309" },
 };
 
-const TRUST_ITEMS = [
-  "✈ IATA Accredited Agent",
-  "🏅 Agent Code: 97-3 0091 7",
-  "💳 Visa Accepted",
-  "💳 Mastercard Accepted",
-  "💳 Amex Accepted",
-  "🌍 33 Years of International Travel Expertise",
-  "📍 Colombo, Sri Lanka",
-  "☎ WhatsApp +94 76 728 2513",
-  "✈ IATA Accredited Agent",
-  "🏅 Agent Code: 97-3 0091 7",
+const TRUST_TEXT = [
   "💳 Visa Accepted",
   "💳 Mastercard Accepted",
   "💳 Amex Accepted",
@@ -55,6 +45,18 @@ const TRUST_ITEMS = [
   "📍 Colombo, Sri Lanka",
   "☎ WhatsApp +94 76 728 2513",
 ];
+const TRUST_ITEMS = [...TRUST_TEXT, ...TRUST_TEXT];
+
+function IATABadge() {
+  return (
+    <svg viewBox="0 0 124 34" height="20" style={{ flexShrink: 0, display: "inline-block", verticalAlign: "middle" }}>
+      <rect x="1" y="1" width="122" height="32" rx="4" fill="none" stroke="white" strokeWidth="1.5"/>
+      <text x="62" y="14.5" textAnchor="middle" fill="white" fontSize="12" fontWeight="900" fontFamily="Inter,Arial,sans-serif" letterSpacing="3">IATA</text>
+      <line x1="8" y1="18" x2="116" y2="18" stroke="white" strokeWidth="0.6" opacity="0.4"/>
+      <text x="62" y="27" textAnchor="middle" fill="white" fontSize="6.5" fontWeight="700" fontFamily="Inter,Arial,sans-serif" letterSpacing="1.8">ACCREDITED AGENT</text>
+    </svg>
+  );
+}
 
 function WhatsAppIcon({ size = 18 }: { size?: number }) {
   return (
@@ -74,16 +76,20 @@ export default function Home() {
     <div style={{ fontFamily: "'Inter', sans-serif", background: "#f5f5f3", minHeight: "100vh", color: "#1a1a1a" }}>
 
       {/* ── SCROLLING TRUST BAR ── */}
-      <div style={{ background: "#1a1a1a", color: "#ccc", fontSize: "clamp(10px,1.4vw,11px)", fontWeight: 500, letterSpacing: "0.06em", overflow: "hidden", height: 32, display: "flex", alignItems: "center" }}>
-        <div style={{
-          display: "flex", gap: "clamp(24px,4vw,48px)", whiteSpace: "nowrap",
-          animation: "marquee 40s linear infinite"
-        }}>
+      <div style={{ background: "#1a1a1a", color: "#ccc", fontSize: "clamp(10px,1.4vw,11px)", fontWeight: 500, letterSpacing: "0.06em", overflow: "hidden", height: 36, display: "flex", alignItems: "center" }}>
+        <style>{`@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
+        <div style={{ display: "flex", alignItems: "center", gap: "clamp(28px,4vw,52px)", whiteSpace: "nowrap", animation: "marquee 44s linear infinite", flexShrink: 0 }}>
           {TRUST_ITEMS.map((item, i) => (
-            <span key={i} style={{ flexShrink: 0 }}>{item}</span>
+            <>
+              {i % TRUST_TEXT.length === 0 && (
+                <span key={`badge-${i}`} style={{ flexShrink: 0, display: "flex", alignItems: "center" }}>
+                  <IATABadge />
+                </span>
+              )}
+              <span key={i} style={{ flexShrink: 0 }}>{item}</span>
+            </>
           ))}
         </div>
-        <style>{`@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
       </div>
 
       {/* ── NAVBAR ── */}
