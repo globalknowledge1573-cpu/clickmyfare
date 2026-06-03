@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 const WA_NUMBER = "94767282513";
 const WA_LINK = `https://wa.me/${WA_NUMBER}`;
@@ -9,6 +9,104 @@ function whatsapp(msg: string) {
 }
 function hotelLink(slug: string) {
   return `https://www.hotellook.com/search?destination=${slug}&adults=2&marker=${MARKER}`;
+}
+
+const AIRPORTS = [
+  { code: "DXB", city: "Dubai", country: "UAE" },
+  { code: "LHR", city: "London Heathrow", country: "UK" },
+  { code: "LGW", city: "London Gatwick", country: "UK" },
+  { code: "SIN", city: "Singapore", country: "Singapore" },
+  { code: "NRT", city: "Tokyo Narita", country: "Japan" },
+  { code: "HND", city: "Tokyo Haneda", country: "Japan" },
+  { code: "SYD", city: "Sydney", country: "Australia" },
+  { code: "MEL", city: "Melbourne", country: "Australia" },
+  { code: "YYZ", city: "Toronto", country: "Canada" },
+  { code: "YVR", city: "Vancouver", country: "Canada" },
+  { code: "BKK", city: "Bangkok Suvarnabhumi", country: "Thailand" },
+  { code: "DMK", city: "Bangkok Don Mueang", country: "Thailand" },
+  { code: "CDG", city: "Paris Charles de Gaulle", country: "France" },
+  { code: "ORY", city: "Paris Orly", country: "France" },
+  { code: "FRA", city: "Frankfurt", country: "Germany" },
+  { code: "MUC", city: "Munich", country: "Germany" },
+  { code: "MLE", city: "Male", country: "Maldives" },
+  { code: "JFK", city: "New York JFK", country: "USA" },
+  { code: "EWR", city: "New York Newark", country: "USA" },
+  { code: "LAX", city: "Los Angeles", country: "USA" },
+  { code: "AUH", city: "Abu Dhabi", country: "UAE" },
+  { code: "DOH", city: "Doha", country: "Qatar" },
+  { code: "KWI", city: "Kuwait City", country: "Kuwait" },
+  { code: "BAH", city: "Bahrain", country: "Bahrain" },
+  { code: "RUH", city: "Riyadh", country: "Saudi Arabia" },
+  { code: "JED", city: "Jeddah", country: "Saudi Arabia" },
+  { code: "KUL", city: "Kuala Lumpur", country: "Malaysia" },
+  { code: "CGK", city: "Jakarta", country: "Indonesia" },
+  { code: "DPS", city: "Bali Denpasar", country: "Indonesia" },
+  { code: "HKG", city: "Hong Kong", country: "Hong Kong" },
+  { code: "PEK", city: "Beijing", country: "China" },
+  { code: "PVG", city: "Shanghai Pudong", country: "China" },
+  { code: "ICN", city: "Seoul Incheon", country: "South Korea" },
+  { code: "BOM", city: "Mumbai", country: "India" },
+  { code: "DEL", city: "New Delhi", country: "India" },
+  { code: "MAA", city: "Chennai", country: "India" },
+  { code: "BLR", city: "Bengaluru", country: "India" },
+  { code: "TRV", city: "Thiruvananthapuram", country: "India" },
+  { code: "COK", city: "Kochi", country: "India" },
+  { code: "AMD", city: "Ahmedabad", country: "India" },
+  { code: "IST", city: "Istanbul", country: "Turkey" },
+  { code: "AMS", city: "Amsterdam", country: "Netherlands" },
+  { code: "ZRH", city: "Zurich", country: "Switzerland" },
+  { code: "GVA", city: "Geneva", country: "Switzerland" },
+  { code: "MAD", city: "Madrid", country: "Spain" },
+  { code: "BCN", city: "Barcelona", country: "Spain" },
+  { code: "FCO", city: "Rome", country: "Italy" },
+  { code: "MXP", city: "Milan Malpensa", country: "Italy" },
+  { code: "VIE", city: "Vienna", country: "Austria" },
+  { code: "BRU", city: "Brussels", country: "Belgium" },
+  { code: "CPH", city: "Copenhagen", country: "Denmark" },
+  { code: "OSL", city: "Oslo", country: "Norway" },
+  { code: "ARN", city: "Stockholm", country: "Sweden" },
+  { code: "HEL", city: "Helsinki", country: "Finland" },
+  { code: "SVO", city: "Moscow Sheremetyevo", country: "Russia" },
+  { code: "MEX", city: "Mexico City", country: "Mexico" },
+  { code: "GRU", city: "São Paulo", country: "Brazil" },
+  { code: "JNB", city: "Johannesburg", country: "South Africa" },
+  { code: "NBO", city: "Nairobi", country: "Kenya" },
+  { code: "DAR", city: "Dar es Salaam", country: "Tanzania" },
+  { code: "CAI", city: "Cairo", country: "Egypt" },
+  { code: "ADD", city: "Addis Ababa", country: "Ethiopia" },
+  { code: "MNL", city: "Manila", country: "Philippines" },
+  { code: "SGN", city: "Ho Chi Minh City", country: "Vietnam" },
+  { code: "HAN", city: "Hanoi", country: "Vietnam" },
+  { code: "PNH", city: "Phnom Penh", country: "Cambodia" },
+  { code: "RGN", city: "Yangon", country: "Myanmar" },
+  { code: "DAC", city: "Dhaka", country: "Bangladesh" },
+  { code: "KTM", city: "Kathmandu", country: "Nepal" },
+  { code: "CMB", city: "Colombo", country: "Sri Lanka" },
+  { code: "AKL", city: "Auckland", country: "New Zealand" },
+  { code: "PER", city: "Perth", country: "Australia" },
+  { code: "BNE", city: "Brisbane", country: "Australia" },
+  { code: "ORD", city: "Chicago O'Hare", country: "USA" },
+  { code: "SFO", city: "San Francisco", country: "USA" },
+  { code: "MIA", city: "Miami", country: "USA" },
+  { code: "IAD", city: "Washington DC Dulles", country: "USA" },
+  { code: "YUL", city: "Montreal", country: "Canada" },
+  { code: "LCA", city: "Larnaca", country: "Cyprus" },
+  { code: "OTP", city: "Bucharest", country: "Romania" },
+  { code: "WAW", city: "Warsaw", country: "Poland" },
+  { code: "PRG", city: "Prague", country: "Czech Republic" },
+  { code: "BUD", city: "Budapest", country: "Hungary" },
+  { code: "ATH", city: "Athens", country: "Greece" },
+  { code: "MED", city: "Madinah", country: "Saudi Arabia" },
+];
+
+function filterAirports(q: string) {
+  if (q.length < 2) return [];
+  const s = q.toLowerCase();
+  return AIRPORTS.filter(a =>
+    a.code.toLowerCase().startsWith(s) ||
+    a.city.toLowerCase().includes(s) ||
+    a.country.toLowerCase().startsWith(s)
+  ).slice(0, 8);
 }
 
 const ROUTES = [
@@ -82,6 +180,9 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<CabinTab>("economy");
   const [tripType, setTripType] = useState<"return" | "oneway">("return");
   const [to, setTo] = useState("");
+  const [toSelected, setToSelected] = useState<{ code: string; city: string; country: string } | null>(null);
+  const [showSug, setShowSug] = useState(false);
+  const toRef = useRef<HTMLDivElement>(null);
   const [departDate, setDepartDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
   const [hotelDest, setHotelDest] = useState("");
@@ -93,10 +194,12 @@ export default function Home() {
   const today = new Date().toISOString().split("T")[0];
 
   function handleGetFare() {
-    const destText = to || "my destination";
+    const destText = toSelected
+      ? `${toSelected.city} (${toSelected.code})`
+      : to || "my destination";
     const dateText = departDate ? `, departing ${departDate}` : "";
     const retText = returnDate ? `, returning ${returnDate}` : "";
-    const msg = `Hi! I need a ${CABIN_INFO[activeTab].label} fare from Colombo to ${destText}${dateText}${retText} (${tripType === "return" ? "Round-trip" : "One-way"}). Please confirm availability and price.`;
+    const msg = `Hi! I need a ${CABIN_INFO[activeTab].label} fare from Colombo (CMB) to ${destText}${dateText}${retText} (${tripType === "return" ? "Round-trip" : "One-way"}). Please confirm availability and price.`;
     window.open(whatsapp(msg), "_blank");
   }
 
@@ -193,10 +296,36 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
               </svg>
             </div>
-            <div style={{ flex: "1 1 140px", padding: "8px 14px", borderRight: "1px solid #f0f0f0", minWidth: 0 }}>
+            <div ref={toRef} style={{ flex: "1 1 140px", padding: "8px 14px", borderRight: "1px solid #f0f0f0", minWidth: 0, position: "relative" }}>
               <div style={{ fontSize: 10, color: "#aaa", fontWeight: 700, letterSpacing: "0.1em", marginBottom: 3 }}>TO</div>
-              <input value={to} onChange={e => setTo(e.target.value)} placeholder="Where to?" style={{ fontSize: "clamp(14px,2vw,17px)", fontWeight: to ? 800 : 400, color: to ? "#1a1a1a" : "#bbb", border: "none", outline: "none", background: "transparent", width: "100%", padding: 0 }} />
-              <div style={{ fontSize: 11, color: "#ddd" }}>City or airport</div>
+              <input
+                value={toSelected ? `${toSelected.city} (${toSelected.code})` : to}
+                onChange={e => { setTo(e.target.value); setToSelected(null); setShowSug(true); }}
+                onFocus={() => setShowSug(true)}
+                onBlur={() => setTimeout(() => setShowSug(false), 150)}
+                placeholder="Where to?"
+                style={{ fontSize: "clamp(13px,1.8vw,16px)", fontWeight: toSelected ? 800 : 400, color: toSelected ? "#1a1a1a" : "#888", border: "none", outline: "none", background: "transparent", width: "100%", padding: 0 }}
+              />
+              <div style={{ fontSize: 11, color: "#ddd" }}>City or airport code</div>
+              {/* Dropdown */}
+              {showSug && filterAirports(toSelected ? "" : to).length > 0 && (
+                <div style={{ position: "absolute", top: "100%", left: -1, right: -1, background: "#fff", border: "1px solid #e8e8e8", borderRadius: "0 0 12px 12px", boxShadow: "0 8px 32px rgba(0,0,0,0.13)", zIndex: 999, overflow: "hidden" }}>
+                  {filterAirports(to).map(a => (
+                    <div key={a.code}
+                      onMouseDown={() => { setToSelected(a); setTo(""); setShowSug(false); }}
+                      style={{ padding: "10px 16px", cursor: "pointer", display: "flex", justifyContent: "space-between", alignItems: "center", borderBottom: "1px solid #f5f5f5", transition: "background 0.1s" }}
+                      onMouseEnter={e => (e.currentTarget.style.background = "#f8f8f8")}
+                      onMouseLeave={e => (e.currentTarget.style.background = "#fff")}
+                    >
+                      <div>
+                        <span style={{ fontWeight: 700, fontSize: 14, color: "#1a1a1a" }}>{a.city}</span>
+                        <span style={{ fontSize: 11, color: "#999", marginLeft: 6 }}>{a.country}</span>
+                      </div>
+                      <span style={{ fontSize: 12, fontWeight: 800, background: "#1a1a1a", color: "#fff", borderRadius: 5, padding: "2px 8px", letterSpacing: 1 }}>{a.code}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
             <div style={{ flex: "1 1 110px", padding: "8px 14px", borderRight: "1px solid #f0f0f0", minWidth: 0 }}>
               <div style={{ fontSize: 10, color: "#aaa", fontWeight: 700, letterSpacing: "0.1em", marginBottom: 3 }}>DEPART</div>
