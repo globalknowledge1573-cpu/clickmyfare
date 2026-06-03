@@ -329,7 +329,7 @@ export default function Home() {
               <strong style={{ color: "#999" }}>Global Knowledge Travel Services</strong><br />
               33 Years of Experience in International Travel
             </p>
-            <p style={{ fontSize: 11, color: "#555" }}>IATA Accredited · Agent Code: 97-3 0091 7</p>
+            <p style={{ fontSize: 11, color: "#555" }}>IATA Accredited · Agent Code: 07303284</p>
           </div>
 
           {/* Links */}
