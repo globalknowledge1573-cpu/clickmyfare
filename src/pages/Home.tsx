@@ -534,9 +534,9 @@ export default function Home() {
           <div>
             <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", color: "#555", marginBottom: 14 }}>QUICK LINKS</div>
             {[
-              { label: "Privacy Policy", href: "/clickmyfare/privacy" },
-              { label: "Refund Policy", href: "/clickmyfare/refund-policy" },
-              { label: "Terms & Conditions", href: "/clickmyfare/terms" },
+              { label: "Privacy Policy", href: "/privacy" },
+              { label: "Refund Policy", href: "/refund-policy" },
+              { label: "Terms & Conditions", href: "/terms" },
               { label: "Search Hotels", href: `https://www.hotellook.com/?marker=${MARKER}` },
             ].map(l => (
               <a key={l.label} href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel={l.href.startsWith("http") ? "noreferrer" : undefined}
