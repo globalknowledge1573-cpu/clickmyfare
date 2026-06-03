@@ -82,7 +82,32 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<CabinTab>("economy");
   const [tripType, setTripType] = useState<"return" | "oneway">("return");
   const [to, setTo] = useState("");
+  const [departDate, setDepartDate] = useState("");
+  const [returnDate, setReturnDate] = useState("");
+  const [hotelDest, setHotelDest] = useState("");
+  const [checkIn, setCheckIn] = useState("");
+  const [checkOut, setCheckOut] = useState("");
+  const [hotelGuests, setHotelGuests] = useState("2");
   const cabin = CABIN_INFO[activeTab];
+
+  const today = new Date().toISOString().split("T")[0];
+
+  function handleGetFare() {
+    const destText = to || "my destination";
+    const dateText = departDate ? `, departing ${departDate}` : "";
+    const retText = returnDate ? `, returning ${returnDate}` : "";
+    const msg = `Hi! I need a ${CABIN_INFO[activeTab].label} fare from Colombo to ${destText}${dateText}${retText} (${tripType === "return" ? "Round-trip" : "One-way"}). Please confirm availability and price.`;
+    window.open(whatsapp(msg), "_blank");
+  }
+
+  function handleHotelSearch() {
+    const slug = hotelDest.trim() || "";
+    let url = `https://www.hotellook.com/search?adults=${hotelGuests}&marker=${MARKER}`;
+    if (slug) url += `&destination=${encodeURIComponent(slug)}`;
+    if (checkIn) url += `&checkIn=${checkIn}`;
+    if (checkOut) url += `&checkOut=${checkOut}`;
+    window.open(url, "_blank");
+  }
 
   return (
     <div style={{ fontFamily: "'Inter', sans-serif", background: "#f5f5f3", minHeight: "100vh", color: "#1a1a1a" }}>
@@ -111,8 +136,7 @@ export default function Home() {
           <span style={{ display: "inline-block", width: 9, height: 9, background: "#e63329", borderRadius: 2, marginLeft: 3, marginTop: 4, flexShrink: 0 }} />
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "clamp(12px,2.5vw,32px)" }}>
-          <a href={`https://www.hotellook.com/?marker=${MARKER}`} target="_blank" rel="noreferrer"
-            style={{ fontSize: 13, color: "#555", fontWeight: 500, textDecoration: "none" }}>Hotels</a>
+          <a href="#hotels" style={{ fontSize: 13, color: "#555", fontWeight: 500, textDecoration: "none" }}>Hotels</a>
           <a href={WA_LINK} target="_blank" rel="noreferrer"
             style={{ display: "flex", alignItems: "center", gap: 7, background: "#1a1a1a", color: "#fff", padding: "8px clamp(12px,2vw,18px)", borderRadius: 7, textDecoration: "none", fontSize: "clamp(12px,2vw,13px)", fontWeight: 600 }}>
             <WhatsAppIcon size={15} />
@@ -174,20 +198,19 @@ export default function Home() {
               <input value={to} onChange={e => setTo(e.target.value)} placeholder="Where to?" style={{ fontSize: "clamp(14px,2vw,17px)", fontWeight: to ? 800 : 400, color: to ? "#1a1a1a" : "#bbb", border: "none", outline: "none", background: "transparent", width: "100%", padding: 0 }} />
               <div style={{ fontSize: 11, color: "#ddd" }}>City or airport</div>
             </div>
-            <div style={{ flex: "1 1 100px", padding: "8px 14px", borderRight: "1px solid #f0f0f0", minWidth: 0 }}>
+            <div style={{ flex: "1 1 110px", padding: "8px 14px", borderRight: "1px solid #f0f0f0", minWidth: 0 }}>
               <div style={{ fontSize: 10, color: "#aaa", fontWeight: 700, letterSpacing: "0.1em", marginBottom: 3 }}>DEPART</div>
-              <div style={{ fontSize: "clamp(14px,2vw,17px)", fontWeight: 700 }}>Select</div>
-              <div style={{ fontSize: 11, color: "#999" }}>date</div>
+              <input type="date" min={today} value={departDate} onChange={e => setDepartDate(e.target.value)}
+                style={{ fontSize: "clamp(12px,1.8vw,15px)", fontWeight: departDate ? 700 : 400, color: departDate ? "#1a1a1a" : "#bbb", border: "none", outline: "none", background: "transparent", width: "100%", padding: 0, cursor: "pointer" }} />
             </div>
             {tripType === "return" && (
-              <div style={{ flex: "1 1 100px", padding: "8px 14px", minWidth: 0 }}>
+              <div style={{ flex: "1 1 110px", padding: "8px 14px", minWidth: 0 }}>
                 <div style={{ fontSize: 10, color: "#aaa", fontWeight: 700, letterSpacing: "0.1em", marginBottom: 3 }}>RETURN</div>
-                <div style={{ fontSize: "clamp(14px,2vw,17px)", fontWeight: 400, color: "#bbb" }}>optional</div>
-                <div style={{ fontSize: 11, color: "#ddd" }}>date</div>
+                <input type="date" min={departDate || today} value={returnDate} onChange={e => setReturnDate(e.target.value)}
+                  style={{ fontSize: "clamp(12px,1.8vw,15px)", fontWeight: returnDate ? 700 : 400, color: returnDate ? "#1a1a1a" : "#bbb", border: "none", outline: "none", background: "transparent", width: "100%", padding: 0, cursor: "pointer" }} />
               </div>
             )}
-            <button
-              onClick={() => window.open(whatsapp(`Hi! I'm looking for a ${CABIN_INFO[activeTab].label} fare from Colombo${to ? ` to ${to}` : ""}. Can you help?`), "_blank")}
+            <button onClick={handleGetFare}
               style={{ background: "#1a1a1a", color: "#fff", border: "none", borderRadius: 10, padding: "0 clamp(16px,2.5vw,28px)", fontSize: "clamp(12px,1.5vw,14px)", fontWeight: 700, cursor: "pointer", letterSpacing: "0.04em", flexShrink: 0, marginLeft: 6, minHeight: 58 }}>
               GET FARE
             </button>
@@ -209,7 +232,13 @@ export default function Home() {
           </a>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 16 }}>
+        <style>{`
+          .cmf-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+          @media (max-width: 1100px) { .cmf-grid { grid-template-columns: repeat(3, 1fr); } }
+          @media (max-width: 720px)  { .cmf-grid { grid-template-columns: repeat(2, 1fr); } }
+          @media (max-width: 480px)  { .cmf-grid { grid-template-columns: 1fr; } }
+        `}</style>
+        <div className="cmf-grid">
           {ROUTES.map(r => {
             const price = activeTab === "economy" ? r.economy : activeTab === "premium" ? r.premium : r.business;
             const msg = `Hi! I'm interested in a ${CABIN_INFO[activeTab].label} fare from Colombo to ${r.dest} (${r.code}). Price shown: ${price}. Can you confirm?`;
@@ -246,17 +275,46 @@ export default function Home() {
       </div>
 
       {/* ── HOTELS ── */}
-      <div style={{ background: "#f5f5f3", padding: "clamp(40px,6vw,64px) clamp(16px,5vw,60px)" }}>
+      <div id="hotels" style={{ background: "#f5f5f3", padding: "clamp(40px,6vw,64px) clamp(16px,5vw,60px)" }}>
         <div style={{ fontSize: "clamp(9px,1.4vw,11px)", letterSpacing: "0.14em", color: "#aaa", fontWeight: 600, marginBottom: 10 }}>BOOKING.COM · AGODA · EXPEDIA · HOTELS.COM — ALL IN ONE SEARCH</div>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 28, flexWrap: "wrap", gap: 12 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 20, flexWrap: "wrap", gap: 12 }}>
           <h2 style={{ fontSize: "clamp(22px,3.5vw,32px)", fontWeight: 900, letterSpacing: "-1px" }}>Hotels — bundle your stay</h2>
-          <a href={`https://www.hotellook.com/?marker=${MARKER}`} target="_blank" rel="noreferrer"
-            style={{ fontSize: 13, color: "#1a1a1a", fontWeight: 600, textDecoration: "none", display: "flex", alignItems: "center", gap: 6, border: "1.5px solid #1a1a1a", padding: "6px 14px", borderRadius: 7 }}>
-            Search all hotels →
-          </a>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 16 }}>
+        {/* Hotel Search Box */}
+        <div style={{ background: "#fff", borderRadius: 14, padding: 8, boxShadow: "0 2px 24px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04)", marginBottom: 28 }}>
+          <div style={{ display: "flex", alignItems: "stretch", gap: 0, flexWrap: "wrap", padding: "4px 6px" }}>
+            <div style={{ flex: "2 1 160px", padding: "8px 14px", borderRight: "1px solid #f0f0f0", minWidth: 0 }}>
+              <div style={{ fontSize: 10, color: "#aaa", fontWeight: 700, letterSpacing: "0.1em", marginBottom: 3 }}>DESTINATION</div>
+              <input value={hotelDest} onChange={e => setHotelDest(e.target.value)} placeholder="City or hotel name"
+                style={{ fontSize: "clamp(13px,1.8vw,16px)", fontWeight: hotelDest ? 700 : 400, color: hotelDest ? "#1a1a1a" : "#bbb", border: "none", outline: "none", background: "transparent", width: "100%", padding: 0 }} />
+              <div style={{ fontSize: 11, color: "#ddd" }}>e.g. Dubai, Bangkok</div>
+            </div>
+            <div style={{ flex: "1 1 110px", padding: "8px 14px", borderRight: "1px solid #f0f0f0", minWidth: 0 }}>
+              <div style={{ fontSize: 10, color: "#aaa", fontWeight: 700, letterSpacing: "0.1em", marginBottom: 3 }}>CHECK-IN</div>
+              <input type="date" min={today} value={checkIn} onChange={e => setCheckIn(e.target.value)}
+                style={{ fontSize: "clamp(11px,1.5vw,14px)", fontWeight: checkIn ? 700 : 400, color: checkIn ? "#1a1a1a" : "#bbb", border: "none", outline: "none", background: "transparent", width: "100%", padding: 0, cursor: "pointer" }} />
+            </div>
+            <div style={{ flex: "1 1 110px", padding: "8px 14px", borderRight: "1px solid #f0f0f0", minWidth: 0 }}>
+              <div style={{ fontSize: 10, color: "#aaa", fontWeight: 700, letterSpacing: "0.1em", marginBottom: 3 }}>CHECK-OUT</div>
+              <input type="date" min={checkIn || today} value={checkOut} onChange={e => setCheckOut(e.target.value)}
+                style={{ fontSize: "clamp(11px,1.5vw,14px)", fontWeight: checkOut ? 700 : 400, color: checkOut ? "#1a1a1a" : "#bbb", border: "none", outline: "none", background: "transparent", width: "100%", padding: 0, cursor: "pointer" }} />
+            </div>
+            <div style={{ flex: "0 1 90px", padding: "8px 14px", borderRight: "1px solid #f0f0f0", minWidth: 0 }}>
+              <div style={{ fontSize: 10, color: "#aaa", fontWeight: 700, letterSpacing: "0.1em", marginBottom: 3 }}>GUESTS</div>
+              <select value={hotelGuests} onChange={e => setHotelGuests(e.target.value)}
+                style={{ fontSize: "clamp(13px,1.8vw,15px)", fontWeight: 700, border: "none", outline: "none", background: "transparent", padding: 0, cursor: "pointer", width: "100%" }}>
+                {["1","2","3","4"].map(n => <option key={n} value={n}>{n} {n === "1" ? "Guest" : "Guests"}</option>)}
+              </select>
+            </div>
+            <button onClick={handleHotelSearch}
+              style={{ background: "#1a1a1a", color: "#fff", border: "none", borderRadius: 10, padding: "0 clamp(14px,2vw,24px)", fontSize: "clamp(12px,1.5vw,14px)", fontWeight: 700, cursor: "pointer", letterSpacing: "0.04em", flexShrink: 0, marginLeft: 4, minHeight: 58 }}>
+              SEARCH HOTELS
+            </button>
+          </div>
+        </div>
+
+        <div className="cmf-grid">
           {HOTELS.map(h => (
             <a key={h.city} href={hotelLink(h.slug)} target="_blank" rel="noreferrer"
               style={{ borderRadius: 14, overflow: "hidden", cursor: "pointer", textDecoration: "none", color: "inherit", display: "block", position: "relative", transition: "transform 0.18s, box-shadow 0.18s", boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}
