@@ -12,21 +12,33 @@ function hotelLink(slug: string) {
 }
 
 const ROUTES = [
-  { dest: "Dubai",     code: "DXB", economy: "LKR 48,200",  premium: "LKR 89,500",  business: "LKR 198,000", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=70" },
-  { dest: "London",    code: "LHR", economy: "LKR 123,500", premium: "LKR 198,000", business: "LKR 485,000", img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=70" },
-  { dest: "Singapore", code: "SIN", economy: "LKR 61,800",  premium: "LKR 112,000", business: "LKR 245,000", img: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=70" },
-  { dest: "Tokyo",     code: "NRT", economy: "LKR 152,454", premium: "LKR 248,000", business: "LKR 520,000", img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=70" },
-  { dest: "Sydney",    code: "SYD", economy: "LKR 198,000", premium: "LKR 320,000", business: "LKR 680,000", img: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&q=70" },
-  { dest: "Toronto",   code: "YYZ", economy: "LKR 210,000", premium: "LKR 345,000", business: "LKR 720,000", img: "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=600&q=70" },
+  { dest: "Dubai",       code: "DXB", economy: "LKR 48,200",  premium: "LKR 89,500",  business: "LKR 198,000", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=70" },
+  { dest: "London",      code: "LHR", economy: "LKR 123,500", premium: "LKR 198,000", business: "LKR 485,000", img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=70" },
+  { dest: "Singapore",   code: "SIN", economy: "LKR 61,800",  premium: "LKR 112,000", business: "LKR 245,000", img: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=70" },
+  { dest: "Tokyo",       code: "NRT", economy: "LKR 152,454", premium: "LKR 248,000", business: "LKR 520,000", img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=70" },
+  { dest: "Sydney",      code: "SYD", economy: "LKR 198,000", premium: "LKR 320,000", business: "LKR 680,000", img: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&q=70" },
+  { dest: "Toronto",     code: "YYZ", economy: "LKR 210,000", premium: "LKR 345,000", business: "LKR 720,000", img: "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=600&q=70" },
+  { dest: "Bangkok",     code: "BKK", economy: "LKR 42,500",  premium: "LKR 78,000",  business: "LKR 185,000", img: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&q=70" },
+  { dest: "Paris",       code: "CDG", economy: "LKR 118,000", premium: "LKR 192,000", business: "LKR 465,000", img: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=70" },
+  { dest: "Melbourne",   code: "MEL", economy: "LKR 195,000", premium: "LKR 315,000", business: "LKR 670,000", img: "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=600&q=70" },
+  { dest: "New York",    code: "JFK", economy: "LKR 225,000", premium: "LKR 365,000", business: "LKR 780,000", img: "https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?w=600&q=70" },
+  { dest: "Frankfurt",   code: "FRA", economy: "LKR 112,000", premium: "LKR 188,000", business: "LKR 450,000", img: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&q=70" },
+  { dest: "Male",        code: "MLE", economy: "LKR 28,500",  premium: "LKR 54,000",  business: "LKR 125,000", img: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=600&q=70" },
 ];
 
 const HOTELS = [
-  { city: "Dubai",        country: "UAE",       slug: "Dubai",        from: "LKR 14,200/night", img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=70" },
-  { city: "Singapore",    country: "Singapore", slug: "Singapore",    from: "LKR 18,500/night", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=70" },
-  { city: "London",       country: "UK",        slug: "London",       from: "LKR 32,000/night", img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=70" },
-  { city: "Bangkok",      country: "Thailand",  slug: "Bangkok",      from: "LKR 8,400/night",  img: "https://images.unsplash.com/photo-1563492065599-3520f775eeed?w=600&q=70" },
-  { city: "Kuala Lumpur", country: "Malaysia",  slug: "Kuala+Lumpur", from: "LKR 9,800/night",  img: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=600&q=70" },
-  { city: "Male",         country: "Maldives",  slug: "Male",         from: "LKR 52,000/night", img: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&q=70" },
+  { city: "Dubai",        country: "UAE",         slug: "Dubai",        from: "LKR 14,200/night", img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=70" },
+  { city: "Singapore",    country: "Singapore",   slug: "Singapore",    from: "LKR 18,500/night", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=70" },
+  { city: "London",       country: "UK",          slug: "London",       from: "LKR 32,000/night", img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=70" },
+  { city: "Bangkok",      country: "Thailand",    slug: "Bangkok",      from: "LKR 8,400/night",  img: "https://images.unsplash.com/photo-1563492065599-3520f775eeed?w=600&q=70" },
+  { city: "Kuala Lumpur", country: "Malaysia",    slug: "Kuala+Lumpur", from: "LKR 9,800/night",  img: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=600&q=70" },
+  { city: "Male",         country: "Maldives",    slug: "Male",         from: "LKR 52,000/night", img: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&q=70" },
+  { city: "Tokyo",        country: "Japan",       slug: "Tokyo",        from: "LKR 28,500/night", img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=70" },
+  { city: "Bali",         country: "Indonesia",   slug: "Bali",         from: "LKR 11,200/night", img: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=70" },
+  { city: "Paris",        country: "France",      slug: "Paris",        from: "LKR 38,000/night", img: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=70" },
+  { city: "Sydney",       country: "Australia",   slug: "Sydney",       from: "LKR 34,500/night", img: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&q=70" },
+  { city: "New York",     country: "USA",         slug: "New+York",     from: "LKR 48,000/night", img: "https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?w=600&q=70" },
+  { city: "Istanbul",     country: "Turkey",      slug: "Istanbul",     from: "LKR 12,800/night", img: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=600&q=70" },
 ];
 
 type CabinTab = "economy" | "premium" | "business";
@@ -197,7 +209,7 @@ export default function Home() {
           </a>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 16 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 16 }}>
           {ROUTES.map(r => {
             const price = activeTab === "economy" ? r.economy : activeTab === "premium" ? r.premium : r.business;
             const msg = `Hi! I'm interested in a ${CABIN_INFO[activeTab].label} fare from Colombo to ${r.dest} (${r.code}). Price shown: ${price}. Can you confirm?`;
@@ -244,7 +256,7 @@ export default function Home() {
           </a>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: 16 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 16 }}>
           {HOTELS.map(h => (
             <a key={h.city} href={hotelLink(h.slug)} target="_blank" rel="noreferrer"
               style={{ borderRadius: 14, overflow: "hidden", cursor: "pointer", textDecoration: "none", color: "inherit", display: "block", position: "relative", transition: "transform 0.18s, box-shadow 0.18s", boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}
@@ -277,7 +289,7 @@ export default function Home() {
       {/* ── WHY CLICKMYFARE ── */}
       <div style={{ background: "#fff", padding: "clamp(40px,6vw,64px) clamp(16px,5vw,60px)" }}>
         <h2 style={{ fontSize: "clamp(22px,3.5vw,32px)", fontWeight: 900, letterSpacing: "-1px", marginBottom: 32, textAlign: "center" }}>Why CLICKMYFARE?</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 20, maxWidth: 900, margin: "0 auto" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 20, maxWidth: 900, margin: "0 auto" }}>
           {[
             { title: "33 Years of Expertise", body: "Global Knowledge Travel Services — IATA accredited since 1992. We know every fare trick in the book." },
             { title: "Economy to Business", body: "One place for all cabin classes. Economy, Premium Economy and Business Class from Colombo to anywhere." },
@@ -305,7 +317,7 @@ export default function Home() {
 
       {/* ── FOOTER ── */}
       <div style={{ background: "#111", color: "#fff", padding: "40px clamp(16px,5vw,60px) 28px" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))", gap: 32, marginBottom: 32 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 32, marginBottom: 32 }}>
           {/* Brand */}
           <div>
             <div style={{ display: "flex", alignItems: "flex-start", marginBottom: 10 }}>
@@ -351,15 +363,25 @@ export default function Home() {
           {/* We Accept */}
           <div>
             <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.12em", color: "#555", marginBottom: 14 }}>WE ACCEPT</div>
-            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-              {[
-                { name: "VISA",       bg: "#1a1f71", color: "#fff" },
-                { name: "MC",         bg: "#EB001B", color: "#fff" },
-                { name: "AMEX",       bg: "#2E77BC", color: "#fff" },
-                { name: "BANK TRF",   bg: "#333",    color: "#ccc" },
-              ].map(c => (
-                <div key={c.name} style={{ background: c.bg, color: c.color, fontSize: 10, fontWeight: 800, padding: "5px 10px", borderRadius: 5, letterSpacing: "0.04em" }}>{c.name}</div>
-              ))}
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+              {/* Visa */}
+              <svg viewBox="0 0 72 24" width="52" height="17" aria-label="Visa">
+                <text x="1" y="20" fill="white" fontSize="21" fontWeight="900" fontFamily="Arial,sans-serif" fontStyle="italic" letterSpacing="-0.5">VISA</text>
+              </svg>
+              {/* Mastercard */}
+              <svg viewBox="0 0 46 30" width="40" height="26" aria-label="Mastercard">
+                <circle cx="16" cy="15" r="14" fill="white" opacity="0.9"/>
+                <circle cx="30" cy="15" r="14" fill="white" opacity="0.5"/>
+                <text x="23" y="19" textAnchor="middle" fill="#111" fontSize="6" fontWeight="800" fontFamily="Arial,sans-serif">MC</text>
+              </svg>
+              {/* Amex */}
+              <svg viewBox="0 0 68 28" width="52" height="20" aria-label="American Express">
+                <rect x="1" y="1" width="66" height="26" rx="4" fill="none" stroke="white" strokeWidth="1.2"/>
+                <text x="34" y="12" textAnchor="middle" fill="white" fontSize="7" fontWeight="800" fontFamily="Arial,sans-serif" letterSpacing="1">AMERICAN</text>
+                <text x="34" y="22" textAnchor="middle" fill="white" fontSize="7.5" fontWeight="900" fontFamily="Arial,sans-serif" letterSpacing="2">EXPRESS</text>
+              </svg>
+              {/* Bank Transfer */}
+              <div style={{ color: "#888", fontSize: 9, fontWeight: 700, letterSpacing: "0.08em", borderLeft: "1px solid #333", paddingLeft: 10 }}>BANK<br/>TRANSFER</div>
             </div>
             <p style={{ fontSize: 11, color: "#555", marginTop: 10, lineHeight: 1.6 }}>
               Secure payments processed by<br />your trusted travel experts.
