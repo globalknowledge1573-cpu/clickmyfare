@@ -131,19 +131,82 @@ function filterAirports(q: string) {
   ).slice(0, 8);
 }
 
-const ROUTES = [
-  { dest: "Dubai",       code: "DXB", economy: "LKR 48,200",  premium: "LKR 89,500",  business: "LKR 198,000", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80" },
-  { dest: "London",      code: "LHR", economy: "LKR 123,500", premium: "LKR 198,000", business: "LKR 485,000", img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80" },
-  { dest: "Singapore",   code: "SIN", economy: "LKR 61,800",  premium: "LKR 112,000", business: "LKR 245,000", img: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80" },
-  { dest: "Tokyo",       code: "NRT", economy: "LKR 152,454", premium: "LKR 248,000", business: "LKR 520,000", img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80" },
-  { dest: "Sydney",      code: "SYD", economy: "LKR 198,000", premium: "LKR 320,000", business: "LKR 680,000", img: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=800&q=80" },
-  { dest: "Toronto",     code: "YYZ", economy: "LKR 210,000", premium: "LKR 345,000", business: "LKR 720,000", img: "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=800&q=80" },
-  { dest: "Bangkok",     code: "BKK", economy: "LKR 42,500",  premium: "LKR 78,000",  business: "LKR 185,000", img: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80" },
-  { dest: "Paris",       code: "CDG", economy: "LKR 118,000", premium: "LKR 192,000", business: "LKR 465,000", img: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80" },
-  { dest: "Melbourne",   code: "MEL", economy: "LKR 195,000", premium: "LKR 315,000", business: "LKR 670,000", img: "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=800&q=80" },
-  { dest: "New York",    code: "JFK", economy: "LKR 225,000", premium: "LKR 365,000", business: "LKR 780,000", img: "https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?w=800&q=80" },
-  { dest: "Frankfurt",   code: "FRA", economy: "LKR 112,000", premium: "LKR 188,000", business: "LKR 450,000", img: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80" },
-  { dest: "Male",        code: "MLE", economy: "LKR 28,500",  premium: "LKR 54,000",  business: "LKR 125,000", img: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80" },
+type Fare = { airline: string; cabin: "Premium Economy" | "Business Class"; price: string };
+type Route = { dest: string; code: string; img: string; fares: Fare[] };
+
+const ROUTES: Route[] = [
+  { dest: "Dubai", code: "DXB", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
+    fares: [
+      { airline: "Emirates", cabin: "Premium Economy", price: "LKR 195,000" },
+      { airline: "Emirates", cabin: "Business Class",  price: "LKR 298,000" },
+      { airline: "Etihad Airways", cabin: "Business Class", price: "LKR 312,000" },
+    ]},
+  { dest: "London", code: "LHR", img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80",
+    fares: [
+      { airline: "Emirates", cabin: "Premium Economy", price: "LKR 328,000" },
+      { airline: "Emirates", cabin: "Business Class",  price: "LKR 575,000" },
+      { airline: "Qatar Airways", cabin: "Business Class", price: "LKR 545,000" },
+    ]},
+  { dest: "Singapore", code: "SIN", img: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80",
+    fares: [
+      { airline: "Singapore Airlines", cabin: "Business Class", price: "LKR 215,000" },
+      { airline: "Emirates", cabin: "Business Class", price: "LKR 248,000" },
+      { airline: "Cathay Pacific", cabin: "Business Class", price: "LKR 232,000" },
+    ]},
+  { dest: "Tokyo", code: "NRT", img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80",
+    fares: [
+      { airline: "Cathay Pacific", cabin: "Premium Economy", price: "LKR 325,000" },
+      { airline: "Emirates", cabin: "Premium Economy",  price: "LKR 385,000" },
+      { airline: "Cathay Pacific", cabin: "Business Class", price: "LKR 498,000" },
+    ]},
+  { dest: "Sydney", code: "SYD", img: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=800&q=80",
+    fares: [
+      { airline: "Cathay Pacific", cabin: "Premium Economy", price: "LKR 398,000" },
+      { airline: "Emirates", cabin: "Premium Economy",  price: "LKR 445,000" },
+      { airline: "Emirates", cabin: "Business Class",   price: "LKR 720,000" },
+    ]},
+  { dest: "Toronto", code: "YYZ", img: "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=800&q=80",
+    fares: [
+      { airline: "Emirates", cabin: "Premium Economy", price: "LKR 485,000" },
+      { airline: "Emirates", cabin: "Business Class",  price: "LKR 845,000" },
+      { airline: "Qatar Airways", cabin: "Business Class", price: "LKR 815,000" },
+    ]},
+  { dest: "Bangkok", code: "BKK", img: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80",
+    fares: [
+      { airline: "Emirates", cabin: "Premium Economy", price: "LKR 92,000" },
+      { airline: "Thai Airways", cabin: "Business Class", price: "LKR 172,000" },
+      { airline: "Emirates", cabin: "Business Class",  price: "LKR 195,000" },
+    ]},
+  { dest: "Paris", code: "CDG", img: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80",
+    fares: [
+      { airline: "Emirates", cabin: "Premium Economy", price: "LKR 325,000" },
+      { airline: "Qatar Airways", cabin: "Business Class", price: "LKR 495,000" },
+      { airline: "Emirates", cabin: "Business Class",  price: "LKR 565,000" },
+    ]},
+  { dest: "Melbourne", code: "MEL", img: "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=800&q=80",
+    fares: [
+      { airline: "Cathay Pacific", cabin: "Premium Economy", price: "LKR 385,000" },
+      { airline: "Emirates", cabin: "Premium Economy",  price: "LKR 445,000" },
+      { airline: "Emirates", cabin: "Business Class",   price: "LKR 720,000" },
+    ]},
+  { dest: "New York", code: "JFK", img: "https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?w=800&q=80",
+    fares: [
+      { airline: "Emirates", cabin: "Premium Economy", price: "LKR 475,000" },
+      { airline: "Qatar Airways", cabin: "Business Class", price: "LKR 745,000" },
+      { airline: "Emirates", cabin: "Business Class",  price: "LKR 885,000" },
+    ]},
+  { dest: "Frankfurt", code: "FRA", img: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=80",
+    fares: [
+      { airline: "Emirates", cabin: "Premium Economy", price: "LKR 292,000" },
+      { airline: "Lufthansa", cabin: "Business Class", price: "LKR 492,000" },
+      { airline: "Emirates", cabin: "Business Class",  price: "LKR 498,000" },
+    ]},
+  { dest: "Male", code: "MLE", img: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80",
+    fares: [
+      { airline: "Emirates", cabin: "Premium Economy", price: "LKR 82,000" },
+      { airline: "Emirates", cabin: "Business Class",  price: "LKR 122,000" },
+      { airline: "SriLankan Airlines", cabin: "Business Class", price: "LKR 115,000" },
+    ]},
 ];
 
 const HOTELS = [
@@ -389,33 +452,46 @@ export default function Home() {
         `}</style>
         <div className="cmf-grid">
           {ROUTES.map(r => {
-            const price = activeTab === "premium" ? r.premium : r.business;
-            const msg = `Hi! I'm interested in a ${CABIN_INFO[activeTab].label} fare from Colombo (CMB) to ${r.dest} (${r.code}). Price shown: ${price}. Can you confirm availability?`;
+            const visibleFares = r.fares.filter(f => f.cabin === (activeTab === "premium" ? "Premium Economy" : "Business Class"));
+            const allFares = visibleFares.length > 0 ? visibleFares : r.fares;
             return (
-              <a key={r.code} href={whatsapp(msg)} target="_blank" rel="noreferrer"
-                style={{ borderRadius: 14, overflow: "hidden", cursor: "pointer", textDecoration: "none", color: "inherit", display: "block", position: "relative", transition: "transform 0.18s, box-shadow 0.18s", boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}
-                onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 10px 32px rgba(0,0,0,0.14)"; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.07)"; }}>
-                <div style={{ height: 160, overflow: "hidden", position: "relative" }}>
+              <div key={r.code}
+                style={{ borderRadius: 14, overflow: "hidden", background: "#fff", boxShadow: "0 2px 12px rgba(0,0,0,0.07)", transition: "transform 0.18s, box-shadow 0.18s", display: "flex", flexDirection: "column" }}
+                onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 10px 32px rgba(0,0,0,0.14)"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = "none"; (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 12px rgba(0,0,0,0.07)"; }}>
+                {/* Image */}
+                <div style={{ height: 148, overflow: "hidden", position: "relative", flexShrink: 0 }}>
                   <img src={r.img} alt={r.dest} style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
-                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 60%)" }} />
-                  <div style={{ position: "absolute", bottom: 12, left: 14, color: "#fff" }}>
-                    <div style={{ fontSize: "clamp(18px,2.5vw,22px)", fontWeight: 900, letterSpacing: "-0.5px" }}>{r.dest}</div>
-                    <div style={{ fontSize: 11, opacity: 0.85 }}>CMB → {r.code}</div>
-                  </div>
-                  {activeTab === "business" && <span style={{ position: "absolute", top: 10, right: 10, fontSize: 10, background: "#1a1a1a", color: "#fff", padding: "3px 9px", borderRadius: 20, fontWeight: 700 }}>Business</span>}
-                  {activeTab === "premium" && <span style={{ position: "absolute", top: 10, right: 10, fontSize: 10, background: "#7c3aed", color: "#fff", padding: "3px 9px", borderRadius: 20, fontWeight: 700 }}>Premium</span>}
-                </div>
-                <div style={{ background: "#fff", padding: "14px 16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <div>
-                    <div style={{ fontSize: 10, color: "#aaa", fontWeight: 600, letterSpacing: "0.08em" }}>FROM</div>
-                    <div style={{ fontSize: "clamp(15px,2vw,17px)", fontWeight: 900 }}>{price}</div>
-                  </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11, color: "#25d366", fontWeight: 700 }}>
-                    <WhatsAppIcon size={13} /> Book
+                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.68) 0%, transparent 55%)" }} />
+                  <div style={{ position: "absolute", bottom: 10, left: 12, color: "#fff" }}>
+                    <div style={{ fontSize: "clamp(17px,2.2vw,20px)", fontWeight: 900, letterSpacing: "-0.5px" }}>{r.dest}</div>
+                    <div style={{ fontSize: 10, opacity: 0.8, fontWeight: 600 }}>CMB → {r.code} · ONE WAY</div>
                   </div>
                 </div>
-              </a>
+                {/* Fare rows */}
+                <div style={{ padding: "10px 12px 12px", display: "flex", flexDirection: "column", gap: 7, flex: 1 }}>
+                  {allFares.map((f, i) => {
+                    const isPremium = f.cabin === "Premium Economy";
+                    const msg = `Hi! I'd like to enquire about ${f.airline} CMB→${r.code} ${f.cabin} — ${f.price} One Way. Please confirm availability and seat details.`;
+                    return (
+                      <a key={i} href={whatsapp(msg)} target="_blank" rel="noreferrer"
+                        style={{ display: "flex", alignItems: "center", justifyContent: "space-between", background: isPremium ? "#f5f0ff" : "#f0f4ff", borderRadius: 9, padding: "8px 10px", textDecoration: "none", color: "inherit", border: `1px solid ${isPremium ? "#e0d5f8" : "#dce5fb"}`, gap: 6 }}>
+                        <div style={{ minWidth: 0 }}>
+                          <div style={{ fontSize: 11, fontWeight: 700, color: "#1a1a1a", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{f.airline}</div>
+                          <div style={{ fontSize: 9, fontWeight: 600, color: isPremium ? "#7c3aed" : "#2563eb", letterSpacing: "0.06em", textTransform: "uppercase" }}>{f.cabin}</div>
+                        </div>
+                        <div style={{ textAlign: "right", flexShrink: 0 }}>
+                          <div style={{ fontSize: "clamp(12px,1.5vw,13px)", fontWeight: 900, color: "#1a1a1a" }}>{f.price}</div>
+                          <div style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 9, color: "#25d366", fontWeight: 700, justifyContent: "flex-end" }}>
+                            <WhatsAppIcon size={9} /> GET FARE
+                          </div>
+                        </div>
+                      </a>
+                    );
+                  })}
+                  <div style={{ fontSize: 9, color: "#ccc", marginTop: 2, textAlign: "center" }}>Indicative · Subj. to availability · WhatsApp to confirm</div>
+                </div>
+              </div>
             );
           })}
         </div>
