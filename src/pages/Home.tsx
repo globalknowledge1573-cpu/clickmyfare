@@ -262,16 +262,19 @@ export default function Home() {
 
       {/* ── HERO ── */}
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", textAlign: "center", padding: "clamp(56px,8vw,96px) clamp(16px,4vw,40px) clamp(40px,6vw,60px)" }}>
-        <div style={{ fontSize: "clamp(9px,1.5vw,11px)", letterSpacing: "0.18em", color: "#888", fontWeight: 600, marginBottom: 18, display: "flex", alignItems: "center", gap: 8 }}>
-          IATA ACCREDITED
+        <div style={{ fontSize: "clamp(9px,1.5vw,11px)", letterSpacing: "0.18em", color: "#888", fontWeight: 600, marginBottom: 18, display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
+          SRI LANKA'S ONLY DEDICATED PREMIUM FARE PLATFORM
           <span style={{ display: "inline-block", width: 5, height: 5, borderRadius: "50%", background: "#e63329" }} />
-          SRI LANKA'S FARE EXPERTS SINCE 1992
+          IATA ACCREDITED SINCE 1992
         </div>
-        <h1 style={{ fontSize: "clamp(32px,6vw,64px)", fontWeight: 300, lineHeight: 1.05, color: "#1a1a1a", marginBottom: 28, maxWidth: 720, letterSpacing: "-2px" }}>
-          Find the lowest fare,<br /><span style={{ fontWeight: 900 }}>guaranteed.</span>
+        <h1 style={{ fontSize: "clamp(28px,5.5vw,60px)", fontWeight: 300, lineHeight: 1.08, color: "#1a1a1a", marginBottom: 20, maxWidth: 780, letterSpacing: "-2px" }}>
+          Business Class & Premium Economy —<br /><span style={{ fontWeight: 900 }}>finally, a site built for you.</span>
         </h1>
-        <p style={{ fontSize: "clamp(14px,1.8vw,16px)", color: "#666", marginBottom: 36, maxWidth: 420, lineHeight: 1.65 }}>
-          Economy · Premium Economy · Business Class<br />We search every airline. You call us. We beat the price.
+        <p style={{ fontSize: "clamp(13px,1.8vw,16px)", color: "#666", marginBottom: 10, maxWidth: 520, lineHeight: 1.7 }}>
+          The <strong>first and only platform in Sri Lanka</strong> dedicated to Business Class, Premium Economy and Economy fares from Colombo — expert-sourced, IATA-verified, WhatsApp-confirmed.
+        </p>
+        <p style={{ fontSize: "clamp(11px,1.4vw,13px)", color: "#aaa", marginBottom: 32, maxWidth: 460, lineHeight: 1.6 }}>
+          No booking engine algorithms. No hidden markups. Real agents, real fares, real savings.
         </p>
 
         {/* ── SEARCH BOX ── */}
@@ -490,10 +493,10 @@ export default function Home() {
         <h2 style={{ fontSize: "clamp(22px,3.5vw,32px)", fontWeight: 900, letterSpacing: "-1px", marginBottom: 32, textAlign: "center" }}>Why CLICKMYFARE?</h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 20, maxWidth: 900, margin: "0 auto" }}>
           {[
-            { title: "33 Years of Expertise", body: "Global Knowledge Travel Services — IATA accredited since 1992. We know every fare trick in the book." },
-            { title: "Economy to Business", body: "One place for all cabin classes. Economy, Premium Economy and Business Class from Colombo to anywhere." },
-            { title: "Human Experts", body: "No robots. Real travel experts who know your route, your airline and can negotiate the best price." },
-            { title: "Best Price Promise", body: "Found it cheaper elsewhere? WhatsApp us — we'll beat it or match it. That's our commitment." },
+            { title: "Sri Lanka's First & Only", body: "No other platform in Sri Lanka is dedicated to Business Class and Premium Economy fares. We built this for travellers who demand more than economy." },
+            { title: "Fares Booking Engines Miss", body: "33 years of sourcing negotiated rates, consolidator fares and airline deals you will never find on any online booking engine." },
+            { title: "IATA-Accredited Agents", body: "Not an algorithm — a team of accredited agents (Code 07303284) who know every airline, every route, and every trick to secure the best seat at the best price." },
+            { title: "Best Price Promise", body: "Found it cheaper elsewhere? WhatsApp us — we will beat it or match it. That is our 33-year reputation on the line." },
           ].map(w => (
             <div key={w.title} style={{ background: "#f5f5f3", borderRadius: 12, padding: "22px 20px", border: "1px solid #ebebeb" }}>
               <div style={{ fontSize: 13, fontWeight: 800, marginBottom: 8 }}>{w.title}</div>
@@ -505,9 +508,9 @@ export default function Home() {
 
       {/* ── WHATSAPP CTA ── */}
       <div style={{ background: "#1a1a1a", color: "#fff", padding: "clamp(40px,6vw,64px) clamp(16px,5vw,60px)", textAlign: "center" }}>
-        <div style={{ fontSize: "clamp(9px,1.4vw,11px)", letterSpacing: "0.14em", color: "#888", fontWeight: 600, marginBottom: 14 }}>AVAILABLE MON–SAT 9AM–6PM · COLOMBO TIME</div>
-        <h2 style={{ fontSize: "clamp(22px,4vw,40px)", fontWeight: 300, marginBottom: 8, letterSpacing: "-1.5px" }}>Ready to fly? <span style={{ fontWeight: 900 }}>Talk to us.</span></h2>
-        <p style={{ fontSize: 14, color: "#777", marginBottom: 28 }}>Share your route and travel dates — we'll find the best fare in minutes.</p>
+        <div style={{ fontSize: "clamp(9px,1.4vw,11px)", letterSpacing: "0.14em", color: "#888", fontWeight: 600, marginBottom: 14 }}>SRI LANKA'S ONLY DEDICATED PREMIUM FARE PLATFORM · MON–SAT 9AM–6PM</div>
+        <h2 style={{ fontSize: "clamp(22px,4vw,40px)", fontWeight: 300, marginBottom: 8, letterSpacing: "-1.5px" }}>Business Class or Premium Economy? <span style={{ fontWeight: 900 }}>We find it.</span></h2>
+        <p style={{ fontSize: 14, color: "#777", marginBottom: 28 }}>Tell us your route, cabin class and travel dates — our IATA-accredited agents will find the best available fare in minutes. No algorithms. No markups. Just experts.</p>
         <a href={WA_LINK} target="_blank" rel="noreferrer"
           style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "#25d366", color: "#fff", padding: "15px 36px", borderRadius: 10, textDecoration: "none", fontSize: "clamp(14px,2vw,16px)", fontWeight: 700 }}>
           <WhatsAppIcon size={20} /> WhatsApp +94 76 728 2513
