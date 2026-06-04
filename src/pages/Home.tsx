@@ -265,7 +265,7 @@ export default function Home() {
         <div style={{ fontSize: "clamp(9px,1.5vw,11px)", letterSpacing: "0.18em", color: "#888", fontWeight: 600, marginBottom: 18, display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", justifyContent: "center" }}>
           SRI LANKA'S ONLY DEDICATED PREMIUM FARE PLATFORM
           <span style={{ display: "inline-block", width: 5, height: 5, borderRadius: "50%", background: "#e63329" }} />
-          IATA ACCREDITED SINCE 1992
+          IATA ACCREDITED SINCE 2018
         </div>
         <h1 style={{ fontSize: "clamp(28px,5.5vw,60px)", fontWeight: 300, lineHeight: 1.08, color: "#1a1a1a", marginBottom: 20, maxWidth: 780, letterSpacing: "-2px" }}>
           Business Class & Premium Economy —<br /><span style={{ fontWeight: 900 }}>finally, a site built for you.</span>
