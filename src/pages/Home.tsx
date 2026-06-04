@@ -126,41 +126,40 @@ function filterAirports(q: string) {
 }
 
 const ROUTES = [
-  { dest: "Dubai",       code: "DXB", economy: "LKR 48,200",  premium: "LKR 89,500",  business: "LKR 198,000", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=70" },
-  { dest: "London",      code: "LHR", economy: "LKR 123,500", premium: "LKR 198,000", business: "LKR 485,000", img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=70" },
-  { dest: "Singapore",   code: "SIN", economy: "LKR 61,800",  premium: "LKR 112,000", business: "LKR 245,000", img: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=70" },
-  { dest: "Tokyo",       code: "NRT", economy: "LKR 152,454", premium: "LKR 248,000", business: "LKR 520,000", img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=70" },
-  { dest: "Sydney",      code: "SYD", economy: "LKR 198,000", premium: "LKR 320,000", business: "LKR 680,000", img: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&q=70" },
-  { dest: "Toronto",     code: "YYZ", economy: "LKR 210,000", premium: "LKR 345,000", business: "LKR 720,000", img: "https://images.unsplash.com/photo-1517935706615-2717063c2225?w=600&q=70" },
-  { dest: "Bangkok",     code: "BKK", economy: "LKR 42,500",  premium: "LKR 78,000",  business: "LKR 185,000", img: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&q=70" },
-  { dest: "Paris",       code: "CDG", economy: "LKR 118,000", premium: "LKR 192,000", business: "LKR 465,000", img: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=70" },
-  { dest: "Melbourne",   code: "MEL", economy: "LKR 195,000", premium: "LKR 315,000", business: "LKR 670,000", img: "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=600&q=70" },
-  { dest: "New York",    code: "JFK", economy: "LKR 225,000", premium: "LKR 365,000", business: "LKR 780,000", img: "https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?w=600&q=70" },
-  { dest: "Frankfurt",   code: "FRA", economy: "LKR 112,000", premium: "LKR 188,000", business: "LKR 450,000", img: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&q=70" },
-  { dest: "Male",        code: "MLE", economy: "LKR 28,500",  premium: "LKR 54,000",  business: "LKR 125,000", img: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=600&q=70" },
+  { dest: "Dubai",       code: "DXB", economy: "LKR 48,200",  premium: "LKR 89,500",  business: "LKR 198,000", img: "https://images.unsplash.com/photo-1548813030-5a9e2e5c4d4f?w=800&q=80" },
+  { dest: "London",      code: "LHR", economy: "LKR 123,500", premium: "LKR 198,000", business: "LKR 485,000", img: "https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=800&q=80" },
+  { dest: "Singapore",   code: "SIN", economy: "LKR 61,800",  premium: "LKR 112,000", business: "LKR 245,000", img: "https://images.unsplash.com/photo-1565967511849-76a60a516170?w=800&q=80" },
+  { dest: "Tokyo",       code: "NRT", economy: "LKR 152,454", premium: "LKR 248,000", business: "LKR 520,000", img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80" },
+  { dest: "Sydney",      code: "SYD", economy: "LKR 198,000", premium: "LKR 320,000", business: "LKR 680,000", img: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?w=800&q=80" },
+  { dest: "Toronto",     code: "YYZ", economy: "LKR 210,000", premium: "LKR 345,000", business: "LKR 720,000", img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" },
+  { dest: "Bangkok",     code: "BKK", economy: "LKR 42,500",  premium: "LKR 78,000",  business: "LKR 185,000", img: "https://images.unsplash.com/photo-1563492065599-3520f775eeed?w=800&q=80" },
+  { dest: "Paris",       code: "CDG", economy: "LKR 118,000", premium: "LKR 192,000", business: "LKR 465,000", img: "https://images.unsplash.com/photo-1500039436846-25ae2f11882e?w=800&q=80" },
+  { dest: "Melbourne",   code: "MEL", economy: "LKR 195,000", premium: "LKR 315,000", business: "LKR 670,000", img: "https://images.unsplash.com/photo-1514395462725-fb4566210144?w=800&q=80" },
+  { dest: "New York",    code: "JFK", economy: "LKR 225,000", premium: "LKR 365,000", business: "LKR 780,000", img: "https://images.unsplash.com/photo-1490644658840-3f2e3f8c5625?w=800&q=80" },
+  { dest: "Frankfurt",   code: "FRA", economy: "LKR 112,000", premium: "LKR 188,000", business: "LKR 450,000", img: "https://images.unsplash.com/photo-1547637589-f54c34f5d7a4?w=800&q=80" },
+  { dest: "Male",        code: "MLE", economy: "LKR 28,500",  premium: "LKR 54,000",  business: "LKR 125,000", img: "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80" },
 ];
 
 const HOTELS = [
-  { city: "Dubai",        country: "UAE",         slug: "Dubai",        from: "LKR 14,200/night", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=70" },
-  { city: "Singapore",    country: "Singapore",   slug: "Singapore",    from: "LKR 18,500/night", img: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=70" },
-  { city: "London",       country: "UK",          slug: "London",       from: "LKR 32,000/night", img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=70" },
-  { city: "Bangkok",      country: "Thailand",    slug: "Bangkok",      from: "LKR 8,400/night",  img: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&q=70" },
-  { city: "Kuala Lumpur", country: "Malaysia",    slug: "Kuala+Lumpur", from: "LKR 9,800/night",  img: "https://images.unsplash.com/photo-1555899434-94d1368aa7af?w=600&q=70" },
-  { city: "Maldives",     country: "Maldives",    slug: "Male",         from: "LKR 52,000/night", img: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&q=70" },
-  { city: "Tokyo",        country: "Japan",       slug: "Tokyo",        from: "LKR 28,500/night", img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=70" },
-  { city: "Bali",         country: "Indonesia",   slug: "Bali",         from: "LKR 11,200/night", img: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=70" },
-  { city: "Paris",        country: "France",      slug: "Paris",        from: "LKR 38,000/night", img: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=70" },
-  { city: "Sydney",       country: "Australia",   slug: "Sydney",       from: "LKR 34,500/night", img: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&q=70" },
-  { city: "New York",     country: "USA",         slug: "New+York",     from: "LKR 48,000/night", img: "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w=600&q=70" },
-  { city: "Istanbul",     country: "Turkey",      slug: "Istanbul",     from: "LKR 12,800/night", img: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=600&q=70" },
+  { city: "Dubai",        country: "UAE",         slug: "Dubai",        from: "LKR 14,200/night", img: "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=800&q=80" },
+  { city: "Singapore",    country: "Singapore",   slug: "Singapore",    from: "LKR 18,500/night", img: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80" },
+  { city: "London",       country: "UK",          slug: "London",       from: "LKR 32,000/night", img: "https://images.unsplash.com/photo-1455587734955-081b22074882?w=800&q=80" },
+  { city: "Bangkok",      country: "Thailand",    slug: "Bangkok",      from: "LKR 8,400/night",  img: "https://images.unsplash.com/photo-1551882547-ff40c63fe2e2?w=800&q=80" },
+  { city: "Kuala Lumpur", country: "Malaysia",    slug: "Kuala+Lumpur", from: "LKR 9,800/night",  img: "https://images.unsplash.com/photo-1568127869514-aafc3d45cf67?w=800&q=80" },
+  { city: "Maldives",     country: "Maldives",    slug: "Male",         from: "LKR 52,000/night", img: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80" },
+  { city: "Tokyo",        country: "Japan",       slug: "Tokyo",        from: "LKR 28,500/night", img: "https://images.unsplash.com/photo-1542640244-7e672d6cef4e?w=800&q=80" },
+  { city: "Bali",         country: "Indonesia",   slug: "Bali",         from: "LKR 11,200/night", img: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80" },
+  { city: "Paris",        country: "France",      slug: "Paris",        from: "LKR 38,000/night", img: "https://images.unsplash.com/photo-1500039436846-25ae2f11882e?w=800&q=80" },
+  { city: "Sydney",       country: "Australia",   slug: "Sydney",       from: "LKR 34,500/night", img: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&q=80" },
+  { city: "New York",     country: "USA",         slug: "New+York",     from: "LKR 48,000/night", img: "https://images.unsplash.com/photo-1490644658840-3f2e3f8c5625?w=800&q=80" },
+  { city: "Istanbul",     country: "Turkey",      slug: "Istanbul",     from: "LKR 12,800/night", img: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&q=80" },
 ];
 
-type CabinTab = "economy" | "premium" | "business";
+type CabinTab = "premium" | "business";
 
 const CABIN_INFO: Record<CabinTab, { label: string; desc: string; color: string }> = {
-  economy:  { label: "Economy",         desc: "Best value fares from Colombo worldwide",             color: "#1a1a1a" },
-  premium:  { label: "Premium Economy", desc: "More space & comfort at a fraction of business class", color: "#7c3aed" },
-  business: { label: "Business Class",  desc: "Lie-flat beds, lounges & finest dining in the sky",   color: "#b45309" },
+  premium:  { label: "Premium Economy", desc: "More space & comfort at a fraction of Business Class — expert-sourced fares", color: "#7c3aed" },
+  business: { label: "Business Class",  desc: "Lie-flat beds, lounges & finest dining — we source fares booking engines miss", color: "#b45309" },
 };
 
 const TRUST_TEXT = [
@@ -193,7 +192,7 @@ function WhatsAppIcon({ size = 18 }: { size?: number }) {
 }
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState<CabinTab>("economy");
+  const [activeTab, setActiveTab] = useState<CabinTab>("premium");
   const [tripType, setTripType] = useState<"return" | "oneway">("return");
   const [to, setTo] = useState("");
   const [toSelected, setToSelected] = useState<{ code: string; city: string; country: string } | null>(null);
@@ -271,7 +270,7 @@ export default function Home() {
           Business Class & Premium Economy —<br /><span style={{ fontWeight: 900 }}>finally, a site built for you.</span>
         </h1>
         <p style={{ fontSize: "clamp(13px,1.8vw,16px)", color: "#666", marginBottom: 10, maxWidth: 520, lineHeight: 1.7 }}>
-          The <strong>first and only platform in Sri Lanka</strong> dedicated to Business Class, Premium Economy and Economy fares from Colombo — expert-sourced, IATA-verified, WhatsApp-confirmed.
+          The <strong>first and only platform in Sri Lanka</strong> dedicated to Business Class and Premium Economy fares from Colombo — expert-sourced, IATA-verified, WhatsApp-confirmed.
         </p>
         <p style={{ fontSize: "clamp(11px,1.4vw,13px)", color: "#aaa", marginBottom: 32, maxWidth: 460, lineHeight: 1.6 }}>
           No booking engine algorithms. No hidden markups. Real agents, real fares, real savings.
@@ -368,7 +367,7 @@ export default function Home() {
         <div style={{ fontSize: "clamp(9px,1.4vw,11px)", letterSpacing: "0.14em", color: "#aaa", fontWeight: 600, marginBottom: 10 }}>FROM COLOMBO (CMB) — INDICATIVE FARES</div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 28, flexWrap: "wrap", gap: 12 }}>
           <h2 style={{ fontSize: "clamp(22px,3.5vw,32px)", fontWeight: 900, letterSpacing: "-1px" }}>
-            {activeTab === "economy" ? "Popular destinations" : activeTab === "premium" ? "Premium Economy" : "Business Class"}
+            {activeTab === "premium" ? "Premium Economy" : "Business Class"}
           </h2>
           <a href={WA_LINK} target="_blank" rel="noreferrer"
             style={{ fontSize: 13, color: "#1a1a1a", fontWeight: 600, textDecoration: "none", display: "flex", alignItems: "center", gap: 6 }}>
@@ -384,7 +383,7 @@ export default function Home() {
         `}</style>
         <div className="cmf-grid">
           {ROUTES.map(r => {
-            const price = activeTab === "economy" ? r.economy : activeTab === "premium" ? r.premium : r.business;
+            const price = activeTab === "premium" ? r.premium : r.business;
             const msg = `Hi! I'm interested in a ${CABIN_INFO[activeTab].label} fare from Colombo (CMB) to ${r.dest} (${r.code}). Price shown: ${price}. Can you confirm availability?`;
             return (
               <a key={r.code} href={whatsapp(msg)} target="_blank" rel="noreferrer"
@@ -493,7 +492,7 @@ export default function Home() {
         <h2 style={{ fontSize: "clamp(22px,3.5vw,32px)", fontWeight: 900, letterSpacing: "-1px", marginBottom: 32, textAlign: "center" }}>Why CLICKMYFARE?</h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 20, maxWidth: 900, margin: "0 auto" }}>
           {[
-            { title: "Sri Lanka's First & Only", body: "No other platform in Sri Lanka is dedicated to Business Class and Premium Economy fares. We built this for travellers who demand more than economy." },
+            { title: "Sri Lanka's First & Only", body: "No other platform in Sri Lanka is dedicated to Business Class and Premium Economy fares. We built this for travellers who refuse to compromise on comfort." },
             { title: "Fares Booking Engines Miss", body: "33 years of sourcing negotiated rates, consolidator fares and airline deals you will never find on any online booking engine." },
             { title: "IATA-Accredited Agents", body: "Not an algorithm — a team of accredited agents (Code 07303284) who know every airline, every route, and every trick to secure the best seat at the best price." },
             { title: "Best Price Promise", body: "Found it cheaper elsewhere? WhatsApp us — we will beat it or match it. That is our 33-year reputation on the line." },
