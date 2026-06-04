@@ -10,8 +10,14 @@ function whatsapp(msg: string) {
 function hotelWhatsapp(city: string, checkIn = "", checkOut = "", guests = "2") {
   const dateText = checkIn ? `, Check-in: ${checkIn}` : "";
   const outText = checkOut ? `, Check-out: ${checkOut}` : "";
-  const msg = `Hi! I need a hotel in ${city}${dateText}${outText}, ${guests} guest(s). Please send available options and rates.`;
+  const msg = `Hi! I need a hotel in ${city}${dateText}${outText}, ${guests} guest(s). Please send me the best available rates.`;
   return `${WA_LINK}?text=${encodeURIComponent(msg)}`;
+}
+function bookingComUrl(city: string, checkIn = "", checkOut = "", guests = "2") {
+  const params = new URLSearchParams({ ss: city, group_adults: guests, no_rooms: "1" });
+  if (checkIn) params.set("checkin", checkIn);
+  if (checkOut) params.set("checkout", checkOut);
+  return `https://www.booking.com/searchresults.html?${params.toString()}`;
 }
 function toMMDD(date: string) {
   if (!date) return "";
@@ -220,7 +226,7 @@ export default function Home() {
 
   function handleHotelSearch() {
     const city = hotelDest.trim() || "my destination";
-    window.open(hotelWhatsapp(city, checkIn, checkOut, hotelGuests), "_blank");
+    window.open(bookingComUrl(city, checkIn, checkOut, hotelGuests), "_blank");
   }
 
   return (
@@ -417,9 +423,9 @@ export default function Home() {
 
       {/* ── HOTELS ── */}
       <div id="hotels" style={{ background: "#f5f5f3", padding: "clamp(40px,6vw,64px) clamp(16px,5vw,60px)" }}>
-        <div style={{ fontSize: "clamp(9px,1.4vw,11px)", letterSpacing: "0.14em", color: "#aaa", fontWeight: 600, marginBottom: 10 }}>BOOKING.COM · AGODA · EXPEDIA · HOTELS.COM — ALL IN ONE SEARCH</div>
+        <div style={{ fontSize: "clamp(9px,1.4vw,11px)", letterSpacing: "0.14em", color: "#aaa", fontWeight: 600, marginBottom: 10 }}>SEARCH REAL PRICES · POWERED BY BOOKING.COM · BEST RATE? WHATSAPP US</div>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 20, flexWrap: "wrap", gap: 12 }}>
-          <h2 style={{ fontSize: "clamp(22px,3.5vw,32px)", fontWeight: 900, letterSpacing: "-1px" }}>Hotels — bundle your stay</h2>
+          <h2 style={{ fontSize: "clamp(22px,3.5vw,32px)", fontWeight: 900, letterSpacing: "-1px" }}>Hotels — search live rates</h2>
         </div>
 
         {/* Hotel Search Box */}
@@ -457,33 +463,37 @@ export default function Home() {
 
         <div className="cmf-grid">
           {HOTELS.map(h => (
-            <a key={h.city} href={hotelWhatsapp(h.city)} target="_blank" rel="noreferrer"
-              style={{ borderRadius: 14, overflow: "hidden", cursor: "pointer", textDecoration: "none", color: "inherit", display: "block", position: "relative", transition: "transform 0.18s, box-shadow 0.18s", boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}
-              onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 10px 32px rgba(0,0,0,0.14)"; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.07)"; }}>
-              <div style={{ height: 160, overflow: "hidden", position: "relative" }}>
-                <img src={h.img} alt={h.city} style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
-                <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 60%)" }} />
-                <div style={{ position: "absolute", bottom: 12, left: 14, color: "#fff" }}>
-                  <div style={{ fontSize: "clamp(18px,2.5vw,22px)", fontWeight: 900, letterSpacing: "-0.5px" }}>{h.city}</div>
-                  <div style={{ fontSize: 11, opacity: 0.85 }}>{h.country}</div>
+            <div key={h.city}
+              style={{ borderRadius: 14, overflow: "hidden", cursor: "pointer", textDecoration: "none", color: "inherit", display: "block", position: "relative", transition: "transform 0.18s, box-shadow 0.18s", boxShadow: "0 2px 12px rgba(0,0,0,0.07)", background: "#fff" }}
+              onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = "translateY(-3px)"; (e.currentTarget as HTMLElement).style.boxShadow = "0 10px 32px rgba(0,0,0,0.14)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = "none"; (e.currentTarget as HTMLElement).style.boxShadow = "0 2px 12px rgba(0,0,0,0.07)"; }}>
+              <a href={bookingComUrl(h.city)} target="_blank" rel="noreferrer" style={{ textDecoration: "none", color: "inherit", display: "block" }}>
+                <div style={{ height: 160, overflow: "hidden", position: "relative" }}>
+                  <img src={h.img} alt={h.city} style={{ width: "100%", height: "100%", objectFit: "cover" }} loading="lazy" />
+                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 60%)" }} />
+                  <div style={{ position: "absolute", bottom: 12, left: 14, color: "#fff" }}>
+                    <div style={{ fontSize: "clamp(18px,2.5vw,22px)", fontWeight: 900, letterSpacing: "-0.5px" }}>{h.city}</div>
+                    <div style={{ fontSize: 11, opacity: 0.85 }}>{h.country}</div>
+                  </div>
+                  <div style={{ position: "absolute", top: 10, right: 10, background: "#003580", color: "#fff", fontSize: 9, fontWeight: 700, padding: "3px 7px", borderRadius: 4, letterSpacing: "0.06em" }}>BOOKING.COM</div>
                 </div>
-              </div>
-              <div style={{ background: "#fff", padding: "14px 16px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <div>
+                <div style={{ padding: "12px 16px 8px" }}>
                   <div style={{ fontSize: 10, color: "#aaa", fontWeight: 600, letterSpacing: "0.08em" }}>FROM</div>
                   <div style={{ fontSize: "clamp(15px,2vw,17px)", fontWeight: 900 }}>{h.from}</div>
                 </div>
-                <div style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11, color: "#25d366", fontWeight: 700 }}>
-                  <WhatsAppIcon size={13} /> Enquire
-                </div>
+              </a>
+              <div style={{ padding: "0 16px 14px" }}>
+                <a href={hotelWhatsapp(h.city)} target="_blank" rel="noreferrer"
+                  style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, background: "#f0fdf4", color: "#16a34a", fontSize: 11, fontWeight: 700, padding: "7px 10px", borderRadius: 8, textDecoration: "none", border: "1px solid #bbf7d0" }}>
+                  <WhatsAppIcon size={12} /> Beat this price? WhatsApp us
+                </a>
               </div>
-            </a>
+            </div>
           ))}
         </div>
 
         <div style={{ textAlign: "center", fontSize: 11, color: "#bbb", marginTop: 20 }}>
-          Hotel rates are indicative. Our team will find you the best available rates across all providers.
+          Hotel rates via Booking.com. Found a better deal? WhatsApp our team — we'll try to beat it.
         </div>
       </div>
 
