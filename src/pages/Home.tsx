@@ -141,17 +141,17 @@ const ROUTES = [
 ];
 
 const HOTELS = [
-  { city: "Dubai",        country: "UAE",         slug: "Dubai",        from: "LKR 14,200/night", img: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=70" },
-  { city: "Singapore",    country: "Singapore",   slug: "Singapore",    from: "LKR 18,500/night", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=70" },
-  { city: "London",       country: "UK",          slug: "London",       from: "LKR 32,000/night", img: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&q=70" },
-  { city: "Bangkok",      country: "Thailand",    slug: "Bangkok",      from: "LKR 8,400/night",  img: "https://images.unsplash.com/photo-1563492065599-3520f775eeed?w=600&q=70" },
-  { city: "Kuala Lumpur", country: "Malaysia",    slug: "Kuala+Lumpur", from: "LKR 9,800/night",  img: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=600&q=70" },
-  { city: "Male",         country: "Maldives",    slug: "Male",         from: "LKR 52,000/night", img: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&q=70" },
+  { city: "Dubai",        country: "UAE",         slug: "Dubai",        from: "LKR 14,200/night", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=70" },
+  { city: "Singapore",    country: "Singapore",   slug: "Singapore",    from: "LKR 18,500/night", img: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=70" },
+  { city: "London",       country: "UK",          slug: "London",       from: "LKR 32,000/night", img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=70" },
+  { city: "Bangkok",      country: "Thailand",    slug: "Bangkok",      from: "LKR 8,400/night",  img: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=600&q=70" },
+  { city: "Kuala Lumpur", country: "Malaysia",    slug: "Kuala+Lumpur", from: "LKR 9,800/night",  img: "https://images.unsplash.com/photo-1555899434-94d1368aa7af?w=600&q=70" },
+  { city: "Maldives",     country: "Maldives",    slug: "Male",         from: "LKR 52,000/night", img: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&q=70" },
   { city: "Tokyo",        country: "Japan",       slug: "Tokyo",        from: "LKR 28,500/night", img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600&q=70" },
   { city: "Bali",         country: "Indonesia",   slug: "Bali",         from: "LKR 11,200/night", img: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=70" },
   { city: "Paris",        country: "France",      slug: "Paris",        from: "LKR 38,000/night", img: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=70" },
   { city: "Sydney",       country: "Australia",   slug: "Sydney",       from: "LKR 34,500/night", img: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&q=70" },
-  { city: "New York",     country: "USA",         slug: "New+York",     from: "LKR 48,000/night", img: "https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?w=600&q=70" },
+  { city: "New York",     country: "USA",         slug: "New+York",     from: "LKR 48,000/night", img: "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?w=600&q=70" },
   { city: "Istanbul",     country: "Turkey",      slug: "Istanbul",     from: "LKR 12,800/night", img: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=600&q=70" },
 ];
 
