@@ -7,8 +7,11 @@ const MARKER = "535931";
 function whatsapp(msg: string) {
   return `${WA_LINK}?text=${encodeURIComponent(msg)}`;
 }
-function hotelLink(slug: string) {
-  return `https://www.hotellook.com/search?destination=${slug}&adults=2&marker=${MARKER}`;
+function hotelWhatsapp(city: string, checkIn = "", checkOut = "", guests = "2") {
+  const dateText = checkIn ? `, Check-in: ${checkIn}` : "";
+  const outText = checkOut ? `, Check-out: ${checkOut}` : "";
+  const msg = `Hi! I need a hotel in ${city}${dateText}${outText}, ${guests} guest(s). Please send available options and rates.`;
+  return `${WA_LINK}?text=${encodeURIComponent(msg)}`;
 }
 function toMMDD(date: string) {
   if (!date) return "";
@@ -217,12 +220,8 @@ export default function Home() {
   }
 
   function handleHotelSearch() {
-    const slug = hotelDest.trim() || "";
-    let url = `https://www.hotellook.com/search?adults=${hotelGuests}&marker=${MARKER}`;
-    if (slug) url += `&destination=${encodeURIComponent(slug)}`;
-    if (checkIn) url += `&checkIn=${checkIn}`;
-    if (checkOut) url += `&checkOut=${checkOut}`;
-    window.open(url, "_blank");
+    const city = hotelDest.trim() || "my destination";
+    window.open(hotelWhatsapp(city, checkIn, checkOut, hotelGuests), "_blank");
   }
 
   return (
@@ -456,7 +455,7 @@ export default function Home() {
 
         <div className="cmf-grid">
           {HOTELS.map(h => (
-            <a key={h.city} href={hotelLink(h.slug)} target="_blank" rel="noreferrer"
+            <a key={h.city} href={hotelWhatsapp(h.city)} target="_blank" rel="noreferrer"
               style={{ borderRadius: 14, overflow: "hidden", cursor: "pointer", textDecoration: "none", color: "inherit", display: "block", position: "relative", transition: "transform 0.18s, box-shadow 0.18s", boxShadow: "0 2px 12px rgba(0,0,0,0.07)" }}
               onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-3px)"; e.currentTarget.style.boxShadow = "0 10px 32px rgba(0,0,0,0.14)"; }}
               onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.boxShadow = "0 2px 12px rgba(0,0,0,0.07)"; }}>
@@ -473,14 +472,16 @@ export default function Home() {
                   <div style={{ fontSize: 10, color: "#aaa", fontWeight: 600, letterSpacing: "0.08em" }}>FROM</div>
                   <div style={{ fontSize: "clamp(15px,2vw,17px)", fontWeight: 900 }}>{h.from}</div>
                 </div>
-                <div style={{ fontSize: 11, color: "#3b82f6", fontWeight: 700 }}>Browse →</div>
+                <div style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11, color: "#25d366", fontWeight: 700 }}>
+                  <WhatsAppIcon size={13} /> Enquire
+                </div>
               </div>
             </a>
           ))}
         </div>
 
         <div style={{ textAlign: "center", fontSize: 11, color: "#bbb", marginTop: 20 }}>
-          Prices are indicative. Compare across Booking.com, Agoda, Expedia &amp; more via Hotellook — one search.
+          Hotel rates are indicative. Our team will find you the best available rates across all providers.
         </div>
       </div>
 
@@ -537,7 +538,7 @@ export default function Home() {
               { label: "Privacy Policy", href: "/privacy" },
               { label: "Refund Policy", href: "/refund-policy" },
               { label: "Terms & Conditions", href: "/terms" },
-              { label: "Search Hotels", href: `https://www.hotellook.com/?marker=${MARKER}` },
+              { label: "Enquire Hotels", href: WA_LINK },
             ].map(l => (
               <a key={l.label} href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel={l.href.startsWith("http") ? "noreferrer" : undefined}
                 style={{ display: "block", fontSize: 13, color: "#666", textDecoration: "none", marginBottom: 9 }}
