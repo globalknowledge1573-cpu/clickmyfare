@@ -126,7 +126,7 @@ function filterAirports(q: string) {
 }
 
 const ROUTES = [
-  { dest: "Dubai",       code: "DXB", economy: "LKR 48,200",  premium: "LKR 89,500",  business: "LKR 198,000", img: "https://images.unsplash.com/photo-1548813030-5a9e2e5c4d4f?w=800&q=80" },
+  { dest: "Dubai",       code: "DXB", economy: "LKR 48,200",  premium: "LKR 89,500",  business: "LKR 198,000", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80" },
   { dest: "London",      code: "LHR", economy: "LKR 123,500", premium: "LKR 198,000", business: "LKR 485,000", img: "https://images.unsplash.com/photo-1529655683826-aba9b3e77383?w=800&q=80" },
   { dest: "Singapore",   code: "SIN", economy: "LKR 61,800",  premium: "LKR 112,000", business: "LKR 245,000", img: "https://images.unsplash.com/photo-1565967511849-76a60a516170?w=800&q=80" },
   { dest: "Tokyo",       code: "NRT", economy: "LKR 152,454", premium: "LKR 248,000", business: "LKR 520,000", img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80" },
@@ -144,8 +144,8 @@ const HOTELS = [
   { city: "Dubai",        country: "UAE",         slug: "Dubai",        from: "LKR 14,200/night", img: "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=800&q=80" },
   { city: "Singapore",    country: "Singapore",   slug: "Singapore",    from: "LKR 18,500/night", img: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80" },
   { city: "London",       country: "UK",          slug: "London",       from: "LKR 32,000/night", img: "https://images.unsplash.com/photo-1455587734955-081b22074882?w=800&q=80" },
-  { city: "Bangkok",      country: "Thailand",    slug: "Bangkok",      from: "LKR 8,400/night",  img: "https://images.unsplash.com/photo-1551882547-ff40c63fe2e2?w=800&q=80" },
-  { city: "Kuala Lumpur", country: "Malaysia",    slug: "Kuala+Lumpur", from: "LKR 9,800/night",  img: "https://images.unsplash.com/photo-1568127869514-aafc3d45cf67?w=800&q=80" },
+  { city: "Bangkok",      country: "Thailand",    slug: "Bangkok",      from: "LKR 8,400/night",  img: "https://images.unsplash.com/photo-1508009603885-50cf7c579365?w=800&q=80" },
+  { city: "Kuala Lumpur", country: "Malaysia",    slug: "Kuala+Lumpur", from: "LKR 9,800/night",  img: "https://images.unsplash.com/photo-1555899434-94d1368aa7af?w=800&q=80" },
   { city: "Maldives",     country: "Maldives",    slug: "Male",         from: "LKR 52,000/night", img: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80" },
   { city: "Tokyo",        country: "Japan",       slug: "Tokyo",        from: "LKR 28,500/night", img: "https://images.unsplash.com/photo-1542640244-7e672d6cef4e?w=800&q=80" },
   { city: "Bali",         country: "Indonesia",   slug: "Bali",         from: "LKR 11,200/night", img: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80" },
