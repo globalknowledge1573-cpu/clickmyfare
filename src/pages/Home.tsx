@@ -516,12 +516,12 @@ export default function Home() {
             <div style={{ flex: "1 1 110px", padding: "8px 14px", borderRight: "1px solid #f0f0f0", minWidth: 0 }}>
               <div style={{ fontSize: 10, color: "#aaa", fontWeight: 700, letterSpacing: "0.1em", marginBottom: 3 }}>CHECK-IN</div>
               <input type="date" min={today} value={checkIn} onChange={e => setCheckIn(e.target.value)}
-                style={{ fontSize: "clamp(11px,1.5vw,14px)", fontWeight: checkIn ? 700 : 400, color: checkIn ? "#1a1a1a" : "#bbb", border: "none", outline: "none", background: "transparent", width: "100%", padding: 0, cursor: "pointer" }} />
+                style={{ fontSize: "clamp(11px,1.5vw,14px)", fontWeight: checkIn ? 700 : 400, color: checkIn ? "#1a1a1a" : "#bbb", border: "none", outline: "none", background: "transparent", width: "100%", padding: "4px 0", minHeight: 32, cursor: "pointer" }} />
             </div>
             <div style={{ flex: "1 1 110px", padding: "8px 14px", borderRight: "1px solid #f0f0f0", minWidth: 0 }}>
               <div style={{ fontSize: 10, color: "#aaa", fontWeight: 700, letterSpacing: "0.1em", marginBottom: 3 }}>CHECK-OUT</div>
               <input type="date" min={checkIn || today} value={checkOut} onChange={e => setCheckOut(e.target.value)}
-                style={{ fontSize: "clamp(11px,1.5vw,14px)", fontWeight: checkOut ? 700 : 400, color: checkOut ? "#1a1a1a" : "#bbb", border: "none", outline: "none", background: "transparent", width: "100%", padding: 0, cursor: "pointer" }} />
+                style={{ fontSize: "clamp(11px,1.5vw,14px)", fontWeight: checkOut ? 700 : 400, color: checkOut ? "#1a1a1a" : "#bbb", border: "none", outline: "none", background: "transparent", width: "100%", padding: "4px 0", minHeight: 32, cursor: "pointer" }} />
             </div>
             <div style={{ flex: "0 1 90px", padding: "8px 14px", borderRight: "1px solid #f0f0f0", minWidth: 0 }}>
               <div style={{ fontSize: 10, color: "#aaa", fontWeight: 700, letterSpacing: "0.1em", marginBottom: 3 }}>GUESTS</div>
