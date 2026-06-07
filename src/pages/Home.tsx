@@ -429,6 +429,13 @@ export default function Home() {
           </div>
         </div>
         <p style={{ marginTop: 14, fontSize: 12, color: "#aaa", fontStyle: "italic" }}>{cabin.desc}</p>
+        <p style={{ marginTop: 16, fontSize: "clamp(13px,1.6vw,15px)", fontWeight: 300, color: "#555", letterSpacing: "-0.2px" }}>
+          Business Class lounge access at 400+ airports →&nbsp;
+          <a href="https://www.loungepair.com/?ref=global-knowledge" target="_blank" rel="noreferrer"
+            style={{ color: "#b07d00", fontWeight: 600, textDecoration: "none" }}>
+            click here for business class lounge bookings instantly
+          </a>
+        </p>
       </div>
 
       {/* ── FLIGHT DESTINATION CARDS ── */}
