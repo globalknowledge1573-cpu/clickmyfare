@@ -437,7 +437,7 @@ export default function Home() {
           </a>
         </p>
         <p style={{ marginTop: 10, fontSize: "clamp(13px,1.6vw,15px)", fontWeight: 300, color: "#555", letterSpacing: "-0.2px", display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-          <img src="/saily-logo.png" alt="Saily" style={{ height: 22, width: 22, borderRadius: 5, objectFit: "cover", flexShrink: 0 }} />
+          <img src="/saily-logo.png" alt="Saily" style={{ height: 36, width: 36, borderRadius: 7, objectFit: "cover", flexShrink: 0 }} />
           Travelling abroad? Get a Saily eSIM — instant data in 150+ countries. 10% off →&nbsp;
           <a href="https://go.saily.site/aff_c?offer_id=101&aff_id=14650" target="_blank" rel="noreferrer"
             style={{ color: "#b07d00", fontWeight: 600, textDecoration: "none" }}>
