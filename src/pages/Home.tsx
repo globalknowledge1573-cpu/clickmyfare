@@ -642,6 +642,7 @@ export default function Home() {
               { label: "Refund Policy", href: "/refund-policy" },
               { label: "Terms & Conditions", href: "/terms" },
               { label: "Enquire Hotels", href: WA_LINK },
+              { label: "TheFlysky.com – Economy Fares", href: "https://theflysky.com" },
             ].map(l => (
               <a key={l.label} href={l.href} target={l.href.startsWith("http") ? "_blank" : undefined} rel={l.href.startsWith("http") ? "noreferrer" : undefined}
                 style={{ display: "block", fontSize: 13, color: "#666", textDecoration: "none", marginBottom: 9 }}
