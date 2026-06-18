@@ -76,6 +76,16 @@
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #f5f5f3; }
+      #root-loader { display: flex; flex-direction: column; min-height: 100vh; background: #f5f5f3; }
+      #root-loader-bar { background: #1a1a1a; color: #ccc; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; height: 36px; display: flex; align-items: center; justify-content: center; gap: 24px; overflow: hidden; white-space: nowrap; }
+      #root-loader-nav { background: rgba(245,245,243,0.97); border-bottom: 1px solid rgba(0,0,0,0.07); padding: 0 clamp(16px,4vw,48px); height: 58px; display: flex; align-items: center; justify-content: space-between; }
+      #root-loader-logo { font-size: 18px; font-weight: 900; letter-spacing: -0.5px; color: #1a1a1a; display: flex; align-items: center; gap: 2px; }
+      #root-loader-dot { display: inline-block; width: 9px; height: 9px; background: #e63329; border-radius: 2px; margin-left: 3px; margin-top: 4px; }
+      #root-loader-btn { display: flex; align-items: center; gap: 7px; background: #1a1a1a; color: #fff; padding: 8px 18px; border-radius: 7px; font-size: 13px; font-weight: 600; }
+      #root-loader-body { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 60px 20px; }
+      #root-loader-spinner { width: 36px; height: 36px; border: 3px solid #e0e0e0; border-top-color: #1a1a1a; border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 18px; }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      #root-loader-text { font-size: 13px; color: #999; font-weight: 500; letter-spacing: 0.04em; }
     </style>
     <!-- Structured Data: FAQPage -->
     <script type="application/ld+json">
@@ -146,7 +156,25 @@
     </script>
   </head>
   <body>
-    <div id="root"><h1 style="font-family:'Inter',sans-serif;text-align:center;padding:40px 20px;font-size:28px;font-weight:900;color:#1a1a1a">Business Class Flights from Colombo — CLICKMYFARE</h1></div>
+    <div id="root">
+      <div id="root-loader">
+        <div id="root-loader-bar">
+          <span>✈ WhatsApp +94 76 728 2513</span>
+          <span>·</span>
+          <span>IATA Accredited Agent</span>
+          <span>·</span>
+          <span>Business Class &amp; Premium Economy</span>
+        </div>
+        <div id="root-loader-nav">
+          <div id="root-loader-logo">CLICKMYFARE<span id="root-loader-dot"></span></div>
+          <div id="root-loader-btn">+94 76 728 2513</div>
+        </div>
+        <div id="root-loader-body">
+          <div id="root-loader-spinner"></div>
+          <div id="root-loader-text">Loading fares…</div>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
