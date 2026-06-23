@@ -146,7 +146,7 @@ const ROUTES: Route[] = [
   { dest: "London", code: "LHR", img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80",
     fares: [
       { airline: "Emirates", cabin: "Premium Economy", price: "LKR 328,000" },
-      { airline: "Gulf Air", cabin: "Business Class", price: "LKR 123,227" },
+      { airline: "Gulf Air", cabin: "Business Class", price: "LKR 438,000" },
       { airline: "Qatar Airways", cabin: "Business Class", price: "LKR 545,000" },
       { airline: "Emirates", cabin: "Business Class",  price: "LKR 575,000" },
       { airline: "British Airways", cabin: "Business Class", price: "LKR 598,000" },
