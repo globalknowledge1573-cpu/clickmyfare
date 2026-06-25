@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 const WA_NUMBER = "94767282513";
 function wa(msg: string) {
   return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
@@ -91,6 +93,18 @@ const ratingColor = (r: number) =>
   r === 5 ? "#15803d" : r === 4 ? "#65a30d" : r === 3 ? "#d97706" : "#94a3b8";
 
 export default function LondonBusiness() {
+  useEffect(() => {
+    document.title = "Business Class Colombo to London — From LKR 509,000 | CLICKMYFARE";
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", "Business Class flights from Colombo (CMB) to London Heathrow (LHR) from LKR 509,000 one way. Etihad, Gulf Air, Turkish Airlines, Qatar Airways, SriLankan, Malaysia Airlines. IATA accredited agent. WhatsApp +94 76 728 2513.");
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute("href", "https://clickmyfare.com/business-class-colombo-london");
+    return () => {
+      document.title = "Low Business Class Fares from Colombo | CLICKMYFARE";
+      if (desc) desc.setAttribute("content", "Low business class fares & premium economy fares from Colombo (CMB). IATA-accredited, 33 years experience. Emirates, Qatar, Etihad & more. WhatsApp +94 76 728 2513.");
+      if (canonical) canonical.setAttribute("href", "https://clickmyfare.com/");
+    };
+  }, []);
   return (
     <div style={{ fontFamily: "'Inter', -apple-system, sans-serif", background: "#f5f5f3", minHeight: "100vh", color: "#1a1a1a" }}>
 
