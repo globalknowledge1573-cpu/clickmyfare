@@ -132,10 +132,10 @@ function filterAirports(q: string) {
 }
 
 type Fare = { airline: string; cabin: "Premium Economy" | "Business Class"; price: string };
-type Route = { dest: string; code: string; img: string; fares: Fare[] };
+type Route = { dest: string; code: string; img: string; fares: Fare[]; slug?: string };
 
 const ROUTES: Route[] = [
-  { dest: "Dubai", code: "DXB", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
+  { dest: "Dubai", code: "DXB", slug: "/business-class-colombo-dubai", img: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
     fares: [
       { airline: "Emirates", cabin: "Premium Economy", price: "LKR 195,000" },
       { airline: "Qatar Airways", cabin: "Premium Economy", price: "LKR 188,000" },
@@ -143,7 +143,7 @@ const ROUTES: Route[] = [
       { airline: "Etihad Airways", cabin: "Business Class", price: "LKR 312,000" },
       { airline: "Gulf Air", cabin: "Business Class", price: "LKR 285,000" },
     ]},
-  { dest: "London", code: "LHR", img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80",
+  { dest: "London", code: "LHR", slug: "/business-class-colombo-london", img: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80",
     fares: [
       { airline: "Emirates", cabin: "Premium Economy", price: "LKR 328,000" },
       { airline: "Gulf Air", cabin: "Business Class", price: "LKR 438,000" },
@@ -548,6 +548,12 @@ export default function Home() {
                     );
                   })}
                   <div style={{ fontSize: 9, color: "#ccc", marginTop: 2, textAlign: "center" }}>Indicative · Subj. to availability · WhatsApp to confirm</div>
+                  {r.slug && (
+                    <a href={r.slug}
+                      style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 5, background: "#1a1a1a", color: "#fff", borderRadius: 8, padding: "8px 10px", textDecoration: "none", fontSize: 11, fontWeight: 700, marginTop: 4, letterSpacing: "0.03em" }}>
+                      Full Business Class Fares &amp; Details →
+                    </a>
+                  )}
                 </div>
               </div>
             );
