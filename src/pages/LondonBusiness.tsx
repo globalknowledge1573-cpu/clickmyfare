@@ -99,10 +99,42 @@ export default function LondonBusiness() {
     if (desc) desc.setAttribute("content", "Business Class flights from Colombo (CMB) to London Heathrow (LHR) from LKR 509,000 one way. Etihad, Gulf Air, Turkish Airlines, Qatar Airways, SriLankan, Malaysia Airlines. IATA accredited agent. WhatsApp +94 76 728 2513.");
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) canonical.setAttribute("href", "https://clickmyfare.com/business-class-colombo-london");
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.id = "page-schema";
+    schema.text = JSON.stringify([
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "CLICKMYFARE", "item": "https://clickmyfare.com" },
+          { "@type": "ListItem", "position": 2, "name": "Business Class Flights from Colombo", "item": "https://clickmyfare.com/#flights" },
+          { "@type": "ListItem", "position": 3, "name": "Colombo to London Business Class", "item": "https://clickmyfare.com/business-class-colombo-london" }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Business Class — Colombo to London (LHR)",
+        "description": "Business Class flights from Colombo Bandaranaike International Airport (CMB) to London Heathrow (LHR). Includes lounge access, fully flat bed, premium dining. Airlines: Etihad Airways, Gulf Air, Turkish Airlines, Qatar Airways, SriLankan Airlines, Malaysia Airlines.",
+        "brand": { "@type": "Brand", "name": "CLICKMYFARE" },
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "LKR",
+          "lowPrice": "509000",
+          "highPrice": "980000",
+          "offerCount": "6",
+          "availability": "https://schema.org/InStock",
+          "seller": { "@type": "TravelAgency", "name": "CLICKMYFARE — Global Knowledge Travel Services", "url": "https://clickmyfare.com" }
+        }
+      }
+    ]);
+    document.head.appendChild(schema);
     return () => {
       document.title = "Low Business Class Fares from Colombo | CLICKMYFARE";
       if (desc) desc.setAttribute("content", "Low business class fares & premium economy fares from Colombo (CMB). IATA-accredited, 33 years experience. Emirates, Qatar, Etihad & more. WhatsApp +94 76 728 2513.");
       if (canonical) canonical.setAttribute("href", "https://clickmyfare.com/");
+      document.getElementById("page-schema")?.remove();
     };
   }, []);
   return (
