@@ -88,10 +88,42 @@ export default function DubaiBusiness() {
     if (desc) desc.setAttribute("content", "Business Class flights from Colombo (CMB) to Dubai (DXB) from LKR 255,000 one way. flydubai, Etihad fly+bus, SriLankan Airlines, Qatar Airways, Emirates. IATA accredited agent. WhatsApp +94 76 728 2513.");
     const canonical = document.querySelector('link[rel="canonical"]');
     if (canonical) canonical.setAttribute("href", "https://clickmyfare.com/business-class-colombo-dubai");
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.id = "page-schema";
+    schema.text = JSON.stringify([
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "CLICKMYFARE", "item": "https://clickmyfare.com" },
+          { "@type": "ListItem", "position": 2, "name": "Business Class Flights from Colombo", "item": "https://clickmyfare.com/#flights" },
+          { "@type": "ListItem", "position": 3, "name": "Colombo to Dubai Business Class", "item": "https://clickmyfare.com/business-class-colombo-dubai" }
+        ]
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Business Class — Colombo to Dubai (DXB)",
+        "description": "Business Class flights from Colombo Bandaranaike International Airport (CMB) to Dubai International Airport (DXB). Includes lounge access, flat bed, premium dining. Airlines: flydubai, Etihad Airways, SriLankan Airlines, Qatar Airways, Emirates.",
+        "brand": { "@type": "Brand", "name": "CLICKMYFARE" },
+        "offers": {
+          "@type": "AggregateOffer",
+          "priceCurrency": "LKR",
+          "lowPrice": "255000",
+          "highPrice": "389000",
+          "offerCount": "5",
+          "availability": "https://schema.org/InStock",
+          "seller": { "@type": "TravelAgency", "name": "CLICKMYFARE — Global Knowledge Travel Services", "url": "https://clickmyfare.com" }
+        }
+      }
+    ]);
+    document.head.appendChild(schema);
     return () => {
       document.title = "Low Business Class Fares from Colombo | CLICKMYFARE";
       if (desc) desc.setAttribute("content", "Low business class fares & premium economy fares from Colombo (CMB). IATA-accredited, 33 years experience. Emirates, Qatar, Etihad & more. WhatsApp +94 76 728 2513.");
       if (canonical) canonical.setAttribute("href", "https://clickmyfare.com/");
+      document.getElementById("page-schema")?.remove();
     };
   }, []);
   return (
