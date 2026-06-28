@@ -4,6 +4,7 @@ import Terms from "./pages/Terms";
 import Refund from "./pages/Refund";
 import LondonBusiness from "./pages/LondonBusiness";
 import DubaiBusiness from "./pages/DubaiBusiness";
+import NaritaBusiness from "./pages/NaritaBusiness";
 
 function getPage() {
   const path = window.location.pathname;
@@ -12,6 +13,7 @@ function getPage() {
   if (path === "/refund-policy") return <Refund />;
   if (path === "/business-class-colombo-london") return <LondonBusiness />;
   if (path === "/business-class-colombo-dubai") return <DubaiBusiness />;
+  if (path === "/business-class-colombo-narita") return <NaritaBusiness />;
   return <Home />;
 }
 
