@@ -116,6 +116,37 @@ export default function DubaiBusiness() {
           "availability": "https://schema.org/InStock",
           "seller": { "@type": "TravelAgency", "name": "CLICKMYFARE — Global Knowledge Travel Services", "url": "https://clickmyfare.com" }
         }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does Business Class from Colombo to Dubai cost?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Business Class from Colombo (CMB) to Dubai (DXB) starts from LKR 255,000 one way with flydubai (direct). Etihad Airways fly+bus from LKR 260,000 (via Abu Dhabi + coach to Dubai), SriLankan Airlines from LKR 288,000 (direct), Qatar Airways from LKR 335,000 (via Doha), Emirates from LKR 389,000 (direct). WhatsApp CLICKMYFARE on +94 76 728 2513 for a live confirmed fare." }
+          },
+          {
+            "@type": "Question",
+            "name": "Which airline has the cheapest Business Class from Colombo to Dubai?",
+            "acceptedAnswer": { "@type": "Answer", "text": "flydubai currently offers the lowest Business Class fare from Colombo to Dubai at LKR 255,000 one way on a direct flight (~3h 50m). Etihad Airways fly+bus (fly to Abu Dhabi, coach to Dubai) is also very competitive at LKR 260,000. CLICKMYFARE — IATA agent 07303284 — WhatsApp +94 76 728 2513 to confirm availability." }
+          },
+          {
+            "@type": "Question",
+            "name": "How long is the flight from Colombo to Dubai?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Direct flights from Colombo to Dubai take approximately 3 hours 50 minutes. flydubai, SriLankan Airlines and Emirates all operate direct services. Qatar Airways via Doha takes approximately 6h 30m total. Etihad fly+bus (CMB to Abu Dhabi + coach) takes approximately 5h 30m total." }
+          },
+          {
+            "@type": "Question",
+            "name": "What is Etihad fly+bus from Colombo to Dubai?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Etihad fly+bus is a service where you fly Business Class from Colombo to Abu Dhabi (AUH) on Etihad Airways, then take a comfortable luxury coach from Abu Dhabi airport to Dubai (~1h 30m drive). This option is typically cheaper than flying directly to Dubai and includes the famous Etihad Business Lounge in Abu Dhabi." }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I book a Business Class flight from Colombo to Dubai?",
+            "acceptedAnswer": { "@type": "Answer", "text": "WhatsApp CLICKMYFARE on +94 76 728 2513. We are an IATA-accredited travel agent (Code: 07303284) based in Colombo, Sri Lanka with 33 years of experience. We confirm availability, provide the best fare and complete your booking within minutes — at prices often below what airlines publish directly." }
+          }
+        ]
       }
     ]);
     document.head.appendChild(schema);
