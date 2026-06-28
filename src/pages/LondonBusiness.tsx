@@ -127,6 +127,37 @@ export default function LondonBusiness() {
           "availability": "https://schema.org/InStock",
           "seller": { "@type": "TravelAgency", "name": "CLICKMYFARE — Global Knowledge Travel Services", "url": "https://clickmyfare.com" }
         }
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does Business Class from Colombo to London cost?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Business Class from Colombo (CMB) to London Heathrow (LHR) starts from LKR 509,000 one way with Etihad Airways (via Abu Dhabi). Gulf Air from LKR 585,000 (via Bahrain), Turkish Airlines from LKR 792,000 (via Istanbul), Qatar Airways from LKR 875,000 (via Doha), SriLankan Airlines from LKR 889,000 (direct), Malaysia Airlines from LKR 980,000 (via Kuala Lumpur). WhatsApp CLICKMYFARE on +94 76 728 2513 for a live confirmed fare." }
+          },
+          {
+            "@type": "Question",
+            "name": "Which airline has the cheapest Business Class from Colombo to London?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Etihad Airways currently offers the lowest Business Class fare from Colombo to London at LKR 509,000 one way via Abu Dhabi. CLICKMYFARE is an IATA-accredited travel agent (Code: 07303284) with access to exclusive fares not available on public booking engines. WhatsApp +94 76 728 2513 to confirm today's best price." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Business Class from Colombo to London include lounge access?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. All Business Class tickets include lounge access at Colombo (Serendib Lounge, BIA) and at London Heathrow. Etihad uses T4 lounge, Gulf Air's Falcon Gold Lounge is at T4, Turkish Airlines CIP Lounge is at T2, Qatar Airways Al Mourjan is at T4, and Malaysia Airlines Golden Lounge is at T4." }
+          },
+          {
+            "@type": "Question",
+            "name": "How long is the flight from Colombo to London?",
+            "acceptedAnswer": { "@type": "Answer", "text": "SriLankan Airlines flies direct from Colombo to London Heathrow in approximately 10h 45m. Connecting flights via the Middle East (Etihad via Abu Dhabi, Gulf Air via Bahrain, Qatar via Doha, Turkish via Istanbul) take 13–16 hours total including the layover." }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I book a Business Class flight from Colombo to London?",
+            "acceptedAnswer": { "@type": "Answer", "text": "WhatsApp CLICKMYFARE on +94 76 728 2513. As an IATA-accredited travel agent with 33 years of experience, we confirm availability, provide the best fare, and process your booking within minutes. We access consolidator rates not available on public sites — often saving you 20–35% versus booking direct." }
+          }
+        ]
       }
     ]);
     document.head.appendChild(schema);
