@@ -180,7 +180,7 @@ const ROUTES: Route[] = [
       { airline: "Emirates", cabin: "Business Class", price: "LKR 412,000" },
       { airline: "Qatar Airways", cabin: "Business Class", price: "LKR 398,000" },
     ]},
-  { dest: "Tokyo", code: "NRT", img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80",
+  { dest: "Tokyo", code: "NRT", slug: "/business-class-colombo-narita", img: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800&q=80",
     fares: [
       { airline: "Cathay Pacific", cabin: "Premium Economy", price: "LKR 325,000" },
       { airline: "Emirates", cabin: "Premium Economy",  price: "LKR 385,000" },
