@@ -5,6 +5,7 @@ import Refund from "./pages/Refund";
 import LondonBusiness from "./pages/LondonBusiness";
 import DubaiBusiness from "./pages/DubaiBusiness";
 import NaritaBusiness from "./pages/NaritaBusiness";
+import VietnamNaritaBusiness from "./pages/VietnamNaritaBusiness";
 
 function getPage() {
   const path = window.location.pathname;
@@ -14,6 +15,7 @@ function getPage() {
   if (path === "/business-class-colombo-london") return <LondonBusiness />;
   if (path === "/business-class-colombo-dubai") return <DubaiBusiness />;
   if (path === "/business-class-colombo-narita") return <NaritaBusiness />;
+  if (path === "/vietnam-airlines-colombo-narita") return <VietnamNaritaBusiness />;
   return <Home />;
 }
 
