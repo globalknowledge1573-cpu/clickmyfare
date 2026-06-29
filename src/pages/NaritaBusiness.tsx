@@ -84,6 +84,7 @@ export default function NaritaBusiness() {
         "@type": "Product",
         "name": "Business Class — Colombo to Tokyo Narita (NRT)",
         "description": "Business Class flights from Colombo (CMB) to Tokyo Narita (NRT). Malaysia Airlines via KUL, Cathay Pacific via HKG, SriLankan Airlines. Includes lounge access and fully flat bed.",
+        "image": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200&q=90",
         "brand": { "@type": "Brand", "name": "CLICKMYFARE" },
         "offers": {
           "@type": "AggregateOffer",
@@ -92,6 +93,21 @@ export default function NaritaBusiness() {
           "highPrice": "499000",
           "offerCount": "3",
           "availability": "https://schema.org/InStock",
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "LK",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "LKR" },
+            "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "LK" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY" }
+            }
+          },
           "seller": { "@type": "TravelAgency", "name": "CLICKMYFARE — Global Knowledge Travel Services", "url": "https://clickmyfare.com" }
         }
       },
