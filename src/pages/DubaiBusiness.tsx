@@ -106,6 +106,7 @@ export default function DubaiBusiness() {
         "@type": "Product",
         "name": "Business Class — Colombo to Dubai (DXB)",
         "description": "Business Class flights from Colombo Bandaranaike International Airport (CMB) to Dubai International Airport (DXB). Includes lounge access, flat bed, premium dining. Airlines: flydubai, Etihad Airways, SriLankan Airlines, Qatar Airways, Emirates.",
+        "image": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=90",
         "brand": { "@type": "Brand", "name": "CLICKMYFARE" },
         "offers": {
           "@type": "AggregateOffer",
@@ -114,6 +115,21 @@ export default function DubaiBusiness() {
           "highPrice": "389000",
           "offerCount": "5",
           "availability": "https://schema.org/InStock",
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "LK",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "LKR" },
+            "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "LK" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY" }
+            }
+          },
           "seller": { "@type": "TravelAgency", "name": "CLICKMYFARE — Global Knowledge Travel Services", "url": "https://clickmyfare.com" }
         }
       },
