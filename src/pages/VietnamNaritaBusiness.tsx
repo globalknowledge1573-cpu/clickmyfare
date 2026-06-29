@@ -50,6 +50,7 @@ export default function VietnamNaritaBusiness() {
         "@type": "Product",
         "name": "Vietnam Airlines Business Class — Colombo to Tokyo Narita via Ho Chi Minh City",
         "description": "Vietnam Airlines Business Class from Colombo (CMB) to Tokyo Narita (NRT) via Ho Chi Minh City (SGN). New route from August 17, 2026. LKR 349,000 one way. Includes lounge access at CMB, SGN and NRT.",
+        "image": "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=1200&q=90",
         "brand": { "@type": "Brand", "name": "CLICKMYFARE" },
         "offers": {
           "@type": "Offer",
@@ -57,6 +58,21 @@ export default function VietnamNaritaBusiness() {
           "price": "349000",
           "availability": "https://schema.org/InStock",
           "validFrom": "2026-08-17",
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "LK",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "LKR" },
+            "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "LK" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY" }
+            }
+          },
           "seller": { "@type": "TravelAgency", "name": "CLICKMYFARE — Global Knowledge Travel Services", "url": "https://clickmyfare.com" }
         }
       },
