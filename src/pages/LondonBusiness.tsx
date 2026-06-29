@@ -117,6 +117,7 @@ export default function LondonBusiness() {
         "@type": "Product",
         "name": "Business Class — Colombo to London (LHR)",
         "description": "Business Class flights from Colombo Bandaranaike International Airport (CMB) to London Heathrow (LHR). Includes lounge access, fully flat bed, premium dining. Airlines: Etihad Airways, Gulf Air, Turkish Airlines, Qatar Airways, SriLankan Airlines, Malaysia Airlines.",
+        "image": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1200&q=90",
         "brand": { "@type": "Brand", "name": "CLICKMYFARE" },
         "offers": {
           "@type": "AggregateOffer",
@@ -125,6 +126,21 @@ export default function LondonBusiness() {
           "highPrice": "980000",
           "offerCount": "6",
           "availability": "https://schema.org/InStock",
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "LK",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+          },
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": { "@type": "MonetaryAmount", "value": "0", "currency": "LKR" },
+            "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "LK" },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 1, "unitCode": "DAY" },
+              "transitTime": { "@type": "QuantitativeValue", "minValue": 0, "maxValue": 0, "unitCode": "DAY" }
+            }
+          },
           "seller": { "@type": "TravelAgency", "name": "CLICKMYFARE — Global Knowledge Travel Services", "url": "https://clickmyfare.com" }
         }
       },
