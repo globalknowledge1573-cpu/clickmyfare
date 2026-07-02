@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=1920"/>
+<title>CLICKMYFARE — YouTube Ad</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Playfair+Display:ital,wght@1,700&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body {
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+    background: #000;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* ─── SCENE SYSTEM ─── */
+  .scene {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Scene 1: 0–7s — image zoom in */
+  .scene1 { animation: sceneShow 7s ease forwards 0s; }
+
+  /* Scene 2: 7–14s — price reveal */
+  .scene2 { animation: sceneShow 7s ease forwards 7s; }
+
+  /* Scene 3: 14–21s — CTA */
+  .scene3 { animation: sceneShow 7s ease forwards 14s; }
+
+  /* Scene 4: 21–30s — white end card */
+  .scene4 { animation: sceneShowEnd 9s ease forwards 21s; }
+
+  @keyframes sceneShow {
+    0%   { opacity:0; }
+    8%   { opacity:1; }
+    88%  { opacity:1; }
+    100% { opacity:0; }
+  }
+  @keyframes sceneShowEnd {
+    0%   { opacity:0; }
+    8%   { opacity:1; }
+    100% { opacity:1; }
+  }
+
+  /* ─── SCENE 1: MAIN IMAGE ZOOM ─── */
+  .s1-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+  .s1-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    animation: kenBurns 7s ease forwards;
+  }
+  @keyframes kenBurns {
+    from { transform: scale(1.08); }
+    to   { transform: scale(1.0); }
+  }
+  .s1-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,40,0.72) 0%, rgba(0,0,0,0.1) 60%);
+  }
+  .s1-content {
+    position: absolute;
+    left: 90px; top: 50%;
+    transform: translateY(-50%);
+  }
+  .s1-tag {
+    font-size: 22px; font-weight: 700; color: #D4AF37; letter-spacing: 0.2em;
+    text-transform: uppercase;
+    animation: slideUp 0.8s ease forwards 0.4s; opacity: 0;
+  }
+  .s1-route {
+    font-size: 92px; font-weight: 900; color: #fff; line-height: 1;
+    letter-spacing: -2px; margin: 12px 0 8px;
+    animation: slideUp 0.9s ease forwards 0.7s; opacity: 0;
+  }
+  .s1-route span { color: #D4AF37; }
+  .s1-class {
+    display: inline-block;
+    background: #c0392b; color: #fff;
+    font-size: 32px; font-weight: 800; letter-spacing: 0.1em;
+    padding: 10px 28px; border-radius: 6px;
+    animation: slideUp 0.9s ease forwards 1s; opacity: 0;
+  }
+  .s1-date {
+    font-size: 22px; font-weight: 600; color: rgba(255,255,255,0.8);
+    margin-top: 18px; letter-spacing: 0.12em;
+    animation: slideUp 0.9s ease forwards 1.3s; opacity: 0;
+  }
+
+  /* ─── SCENE 2: PRICE REVEAL ─── */
+  .s2-bg {
+    position: absolute; inset: 0;
+    overflow: hidden;
+  }
+  .s2-img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center;
+    filter: brightness(0.45);
+  }
+  .s2-content {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0;
+  }
+  .s2-label {
+    font-size: 26px; font-weight: 700; color: #D4AF37;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    animation: fadeUp 0.8s ease forwards 7.3s; opacity: 0;
+  }
+  .s2-price {
+    font-size: 180px; font-weight: 900; color: #fff;
+    letter-spacing: -6px; line-height: 1;
+    animation: pricePop 1s cubic-bezier(0.34,1.56,0.64,1) forwards 7.7s; opacity: 0;
+  }
+  .s2-price-currency {
+    font-size: 60px; font-weight: 700; color: #D4AF37;
+    vertical-align: super; line-height: 0;
+  }
+  .s2-sub {
+    font-size: 26px; font-weight: 600; color: rgba(255,255,255,0.75);
+    letter-spacing: 0.16em; margin-top: 8px;
+    animation: fadeUp 0.8s ease forwards 8.4s; opacity: 0;
+  }
+  .s2-incl {
+    margin-top: 28px; display: flex; gap: 32px;
+    animation: fadeUp 0.8s ease forwards 8.9s; opacity: 0;
+  }
+  .s2-chip {
+    background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 40px; padding: 10px 24px;
+    font-size: 18px; font-weight: 600; color: #fff;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .s2-chip-icon { font-size: 22px; }
+  @keyframes pricePop {
+    from { opacity:0; transform: scale(0.7); }
+    to   { opacity:1; transform: scale(1); }
+  }
+
+  /* ─── SCENE 3: CTA ─── */
+  .s3-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #001240 0%, #002080 40%, #001040 100%);
+  }
+  .s3-stars {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px),
+      radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px);
+    background-size: 120px 120px, 80px 80px;
+    background-position: 0 0, 40px 40px;
+    opacity: 0.3;
+  }
+  .s3-content {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 32px;
+  }
+  .s3-brand {
+    font-size: 56px; font-weight: 900; color: #fff;
+    letter-spacing: -1px; display: flex; align-items: center; gap: 10px;
+    animation: fadeUp 0.8s ease forwards 14.3s; opacity: 0;
+  }
+  .s3-dot {
+    width: 18px; height: 18px; background: #e53935; border-radius: 3px;
+  }
+  .s3-tagline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 34px; color: #D4AF37;
+    animation: fadeUp 0.8s ease forwards 14.7s; opacity: 0;
+  }
+  .s3-divider {
+    width: 200px; height: 2px; background: rgba(255,255,255,0.2);
+    animation: fadeUp 0.7s ease forwards 15.0s; opacity: 0;
+  }
+  .s3-cta-row {
+    display: flex; gap: 40px; align-items: stretch;
+    animation: fadeUp 0.9s ease forwards 15.3s; opacity: 0;
+  }
+  .s3-btn-web {
+    background: #fff; color: #001240;
+    border-radius: 14px; padding: 22px 48px;
+    font-size: 26px; font-weight: 800;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    min-width: 340px;
+  }
+  .s3-btn-web-sub { font-size: 16px; font-weight: 500; color: #555; letter-spacing: 0.06em; }
+  .s3-btn-wa {
+    background: #25d366; color: #fff;
+    border-radius: 14px; padding: 22px 48px;
+    font-size: 26px; font-weight: 800;
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    min-width: 340px;
+  }
+  .s3-btn-wa-num { font-size: 22px; font-weight: 700; }
+  .s3-iata {
+    font-size: 18px; color: rgba(255,255,255,0.5); letter-spacing: 0.1em;
+    animation: fadeUp 0.8s ease forwards 15.8s; opacity: 0;
+  }
+
+  /* ─── SCENE 4: WHITE END CARD ─── */
+  .scene4 {
+    background: #fff;
+  }
+  .s4-content {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 36px;
+  }
+  .s4-logo {
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+    animation: fadeUp 0.9s ease forwards 21.4s; opacity: 0;
+  }
+  .s4-logo-text {
+    font-size: 96px; font-weight: 900; color: #1a1a1a;
+    letter-spacing: -3px; display: flex; align-items: center; gap: 12px;
+  }
+  .s4-logo-dot {
+    width: 24px; height: 24px; background: #e53935; border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .s4-logo-sub {
+    font-size: 24px; font-weight: 500; color: #888;
+    letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .s4-divider {
+    width: 300px; height: 2px; background: #ebebeb;
+    animation: fadeUp 0.7s ease forwards 21.9s; opacity: 0;
+  }
+  .s4-contact {
+    display: flex; gap: 48px; align-items: center;
+    animation: fadeUp 0.9s ease forwards 22.3s; opacity: 0;
+  }
+  .s4-web {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  .s4-web-label { font-size: 16px; color: #aaa; font-weight: 600; letter-spacing: 0.14em; }
+  .s4-web-url { font-size: 36px; font-weight: 800; color: #1a1a1a; }
+  .s4-separator { width: 2px; height: 70px; background: #ebebeb; }
+  .s4-wa {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  .s4-wa-label { font-size: 16px; color: #aaa; font-weight: 600; letter-spacing: 0.14em; }
+  .s4-wa-row { display: flex; align-items: center; gap: 12px; }
+  .s4-wa-icon {
+    width: 46px; height: 46px; background: #25d366; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .s4-wa-num { font-size: 36px; font-weight: 800; color: #1a1a1a; }
+  .s4-iata {
+    font-size: 18px; color: #bbb; letter-spacing: 0.14em;
+    animation: fadeUp 0.7s ease forwards 22.8s; opacity: 0;
+  }
+  .s4-tagline {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 28px; color: #888;
+    animation: fadeUp 0.7s ease forwards 23.2s; opacity: 0;
+  }
+
+  /* ─── SHARED KEYFRAMES ─── */
+  @keyframes slideUp {
+    from { opacity:0; transform: translateY(40px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity:0; transform: translateY(20px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+
+  /* ─── PROGRESS BAR ─── */
+  .progress {
+    position: fixed; bottom: 0; left: 0; height: 6px;
+    background: linear-gradient(90deg, #D4AF37, #e53935);
+    animation: progress 30s linear forwards;
+    z-index: 999;
+  }
+  @keyframes progress {
+    from { width: 0%; }
+    to   { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── SCENE 1: MAIN AD IMAGE ── -->
+<div class="scene scene1">
+  <div class="s1-bg">
+    <img class="s1-img" src="/ad-dubai-biz.jpg" alt="CLICKMYFARE Dubai Business Class"/>
+    <div class="s1-overlay"></div>
+  </div>
+  <div class="s1-content">
+    <div class="s1-tag">CLICKMYFARE.COM · IATA ACCREDITED AGENT</div>
+    <div class="s1-route">COLOMBO<br/><span>→ DUBAI</span></div>
+    <div class="s1-class">BUSINESS CLASS</div>
+    <div class="s1-date">✈ TRAVEL IN JULY 2026</div>
+  </div>
+</div>
+
+<!-- ── SCENE 2: PRICE REVEAL ── -->
+<div class="scene scene2">
+  <div class="s2-bg">
+    <img class="s2-img" src="/ad-dubai-biz.jpg" alt="Business Class Seat"/>
+  </div>
+  <div class="s2-content">
+    <div class="s2-label">All Inclusive One Way Fare</div>
+    <div class="s2-price">
+      <span class="s2-price-currency">LKR </span>288,000
+    </div>
+    <div class="s2-sub">INCLUDES TAXES · BAGGAGE · LOUNGE ACCESS</div>
+    <div class="s2-incl">
+      <div class="s2-chip"><span class="s2-chip-icon">🛏</span> Flat Bed</div>
+      <div class="s2-chip"><span class="s2-chip-icon">🍽</span> Gourmet Dining</div>
+      <div class="s2-chip"><span class="s2-chip-icon">🛋</span> Lounge Access</div>
+      <div class="s2-chip"><span class="s2-chip-icon">🎬</span> Entertainment</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── SCENE 3: CTA ── -->
+<div class="scene scene3">
+  <div class="s3-bg"></div>
+  <div class="s3-stars"></div>
+  <div class="s3-content">
+    <div class="s3-brand">
+      CLICKMYFARE<span class="s3-dot"></span>
+    </div>
+    <div class="s3-tagline">Business Class &amp; Premium Economy — built for you</div>
+    <div class="s3-divider"></div>
+    <div class="s3-cta-row">
+      <div class="s3-btn-web">
+        <div>🌐 clickmyfare.com</div>
+        <div class="s3-btn-web-sub">VISIT OUR WEBSITE</div>
+      </div>
+      <div class="s3-btn-wa">
+        <div>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="white" style="vertical-align:middle;margin-right:8px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp Us
+        </div>
+        <div class="s3-btn-wa-num">+94 76 728 2513</div>
+      </div>
+    </div>
+    <div class="s3-iata">IATA ACCREDITED AGENT · CODE 07303284 · GLOBAL KNOWLEDGE TRAVEL SERVICES</div>
+  </div>
+</div>
+
+<!-- ── SCENE 4: WHITE END CARD ── -->
+<div class="scene scene4">
+  <div class="s4-content">
+    <div class="s4-logo">
+      <div class="s4-logo-text">
+        CLICKMYFARE<span class="s4-logo-dot"></span>
+      </div>
+      <div class="s4-logo-sub">Business Class &amp; Premium Economy</div>
+    </div>
+    <div class="s4-divider"></div>
+    <div class="s4-contact">
+      <div class="s4-web">
+        <div class="s4-web-label">VISIT US</div>
+        <div class="s4-web-url">clickmyfare.com</div>
+      </div>
+      <div class="s4-separator"></div>
+      <div class="s4-wa">
+        <div class="s4-wa-label">WHATSAPP</div>
+        <div class="s4-wa-row">
+          <div class="s4-wa-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div class="s4-wa-num">+94 76 728 2513</div>
+        </div>
+      </div>
+    </div>
+    <div class="s4-tagline">"Fly in Luxury — Arrive in Style"</div>
+    <div class="s4-iata">IATA ACCREDITED · AGENT CODE 07303284 · GLOBAL KNOWLEDGE TRAVEL SERVICES</div>
+  </div>
+</div>
+
+<!-- progress bar -->
+<div class="progress"></div>
+
+</body>
+</html>
